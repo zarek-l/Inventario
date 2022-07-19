@@ -34,10 +34,11 @@
   margin-left: 23%;
   padding-left: 19%;
   padding-right: 19%;
+  color: #378c29;
 }
 
 .loginBtn:hover{
-  background-color: #7D6ED6;
+  background-color: #a4d59c;
   color: white;
 }
 
@@ -48,4 +49,10 @@
 .redirect:hover{
   text-decoration-line: underline;
   color: blue;
+}
+
+.link{
+  color: #71b266;
+  font-style: italic;
+  text-decoration-line: underline;
 }
