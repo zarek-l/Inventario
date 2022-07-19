@@ -40,8 +40,8 @@ export class AuthService {
         });
         this.SetUserData(result.user);
       })
-      .catch((error) => {
-        window.alert(error.message);
+      .catch(() => {
+        window.alert("Este usuario no se encuentra registrado");
       });
   }
 
@@ -50,7 +50,7 @@ export class AuthService {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate(['verify-email-address']);
+        this.router.navigate(['verificar-email']);
       });
   }
   // Reset Forggot password
@@ -65,10 +65,10 @@ export class AuthService {
       });
   }
 
-  // Returns true when user is looged in and email is verified
+  // Returns true when user is looged in
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null;
   }
 
   /* Setting up user data when sign in with username/password,
@@ -83,7 +83,6 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
     };
     return userRef.set(userData, {
       merge: true,
@@ -93,7 +92,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
     });
   }
 }
