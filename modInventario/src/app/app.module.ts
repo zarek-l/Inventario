@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { AuthService } from "./servicios/auth.service";
 import { RutaOlvidarClaveComponent } from './rutas/ruta-olvidar-clave/ruta-olvidar-clave.component';
 import { RutaVerificarEmailComponent } from './rutas/ruta-verificar-email/ruta-verificar-email.component';
+import { RutaDashboardComponent } from './rutas/ruta-dashboard/ruta-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RutaVerificarEmailComponent } from './rutas/ruta-verificar-email/ruta-v
     RutaLoginComponent,
     RutaInicioComponent,
     RutaOlvidarClaveComponent,
-    RutaVerificarEmailComponent
+    RutaVerificarEmailComponent,
+    RutaDashboardComponent
   ],
   imports: [
     BrowserModule,
