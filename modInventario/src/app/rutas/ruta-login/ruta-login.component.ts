@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../servicios/auth.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-ruta-login',
@@ -7,9 +8,18 @@ import { AuthService } from "../../servicios/auth.service";
   styleUrls: ['./ruta-login.component.scss']
 })
 export class RutaLoginComponent implements OnInit {
+  formGroup = this.fb.group({
+    userEmail: new FormControl('',[
+      Validators.required
+    ]),
+    userPass: new FormControl('',[
+      Validators.required
+    ])
+  });
 
   constructor(
-    public authService: AuthService
+    private fb: FormBuilder,
+    public auth: AuthService
   ) { }
 
   ngOnInit(): void {

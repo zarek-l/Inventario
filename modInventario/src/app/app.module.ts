@@ -6,6 +6,14 @@ import { AppComponent } from './app.component';
 import { RutaLoginComponent } from './rutas/ruta-login/ruta-login.component';
 import { RutaInicioComponent } from './rutas/ruta-inicio/ruta-inicio.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDividerModule} from '@angular/material/divider';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavBarModule} from 'src/app/componentes/nav-bar/nav-bar.module';
 
@@ -36,6 +44,15 @@ import { RutaDashboardComponent } from './rutas/ruta-dashboard/ruta-dashboard.co
     BrowserModule,
     AppRoutingModule,
     MatDialogModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     NavBarModule,
     AngularFireModule.initializeApp(environment.firebase),

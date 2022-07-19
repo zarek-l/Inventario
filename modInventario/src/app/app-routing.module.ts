@@ -11,7 +11,7 @@ import {RutaDashboardComponent} from "./rutas/ruta-dashboard/ruta-dashboard.comp
 const routes: Routes = [
   { path: '',
     redirectTo: '/sign-in',
-    pathMatch: 'full' 
+    pathMatch: 'full'
   },
   {
     path: 'login',
