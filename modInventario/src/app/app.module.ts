@@ -20,13 +20,15 @@ import { environment } from '../environments/environment';
 // Auth service
 import { AuthService } from "./servicios/auth.service";
 import { RutaOlvidarClaveComponent } from './rutas/ruta-olvidar-clave/ruta-olvidar-clave.component';
+import { RutaVerificarEmailComponent } from './rutas/ruta-verificar-email/ruta-verificar-email.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RutaLoginComponent,
     RutaInicioComponent,
-    RutaOlvidarClaveComponent
+    RutaOlvidarClaveComponent,
+    RutaVerificarEmailComponent
   ],
   imports: [
     BrowserModule,

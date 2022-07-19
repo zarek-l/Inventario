@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {RutaLoginComponent} from "./rutas/ruta-login/ruta-login.component";
 import {RutaInicioComponent} from "./rutas/ruta-inicio/ruta-inicio.component";
 import {RutaOlvidarClaveComponent} from "./rutas/ruta-olvidar-clave/ruta-olvidar-clave.component";
+import {RutaVerificarEmailComponent} from "./rutas/ruta-verificar-email/ruta-verificar-email.component";
 
 const routes: Routes = [
 
@@ -18,7 +19,10 @@ const routes: Routes = [
     path: 'olvidar-clave',
     component: RutaOlvidarClaveComponent
   },
-
+  {
+    path: 'verificar-email',
+    component: RutaVerificarEmailComponent
+  },
 
 ];
 
