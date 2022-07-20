@@ -19,6 +19,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavBarModule} from 'src/app/componentes/nav-bar/nav-bar.module';
+import {SideBarModule} from "./componentes/side-bar/side-bar.module";
 
 //importar modules de firebase
 import { AngularFireModule } from '@angular/fire/compat';
@@ -34,6 +35,7 @@ import { RutaOlvidarClaveComponent } from './rutas/ruta-olvidar-clave/ruta-olvid
 import { RutaVerificarEmailComponent } from './rutas/ruta-verificar-email/ruta-verificar-email.component';
 import { RutaDashboardComponent } from './rutas/ruta-dashboard/ruta-dashboard.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,30 +45,31 @@ import { RutaDashboardComponent } from './rutas/ruta-dashboard/ruta-dashboard.co
     RutaVerificarEmailComponent,
     RutaDashboardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    ReactiveFormsModule,
-    MatDividerModule,
-    MatTreeModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    BrowserAnimationsModule,
-    NavBarModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        ReactiveFormsModule,
+        MatDividerModule,
+        MatTreeModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        BrowserAnimationsModule,
+        NavBarModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
+        SideBarModule,
+    ],
   providers: [AuthService],
   bootstrap: [AppComponent]
 })
