@@ -18,7 +18,7 @@
       <input matInput #userPassword  formControlName="userPass">
     </mat-form-field><br>
 
-    <span class="link" routerLink="/olvidar-clave">Olvidaste tu contraseña?</span><br><br>
+    <span>¿Desea volver? <a [routerLink]="'/olvidar-clave'">Olvidaste tu contraseña?</a></span><br><br>
     <button class="loginBtn" mat-stroked-button color="primary" (click)="auth.SignIn(userName.value, userPassword.value)">Log-in</button><br>
   </form>
 </mat-card>
