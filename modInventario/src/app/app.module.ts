@@ -12,6 +12,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatIconModule} from '@angular/material/icon';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,6 +53,9 @@ import { RutaDashboardComponent } from './rutas/ruta-dashboard/ruta-dashboard.co
     MatCardModule,
     ReactiveFormsModule,
     MatDividerModule,
+    MatTreeModule,
+    MatSidenavModule,
+    MatIconModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatSelectModule,
