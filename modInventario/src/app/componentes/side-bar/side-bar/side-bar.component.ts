@@ -4,38 +4,45 @@ import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 
 interface FoodNode {
   name: string;
+  url: string;
   children?: FoodNode[];
 }
 
 const TREE_DATA: FoodNode[] = [
   {
     name: 'Gestor de productos',
-    children: [{name: 'Creación de productos'}, {name: 'Listado de productos'}],
+    children: [{name: 'Creación de productos', url:'/dashboard'}, {name: 'Listado de productos', url:'dashboard'}],
+    url:''
   },
   {
     name: 'Gestor de proveedores',
-    children: [{name: 'Creación de proveedor'}, {name: 'Listado de proveedores'}],
+    children: [{name: 'Creación de proveedor', url:'dashboard'}, {name: 'Listado de proveedores', url:'dashboard'}],
+    url:''
   },
   {
     name: 'Gestor de ordenes de compra',
-    children: [{name: 'Creación de orden'}, {name: 'Listado de ordenes'}],
+    children: [{name: 'Creación de orden', url:'dashboard'}, {name: 'Listado de ordenes', url:'dashboard'}],
+    url:''
   },
   {
     name: 'Gestor de bodega',
-    children: [{name: 'Creación de bodega'}, {name: 'Listado de bodegas'}],
+    children: [{name: 'Creación de bodega', url:'dashboard'}, {name: 'Listado de bodegas', url:'dashboard'}],
+    url:''
   },
   {
     name: 'Gestor de kardex',
-    children: [{name: 'Creación de kardex'}, {name: 'Listado de kardex'}],
+    children: [{name: 'Creación de kardex', url:'dashboard'}, {name: 'Listado de kardex', url:'dashboard'}],
+    url:''
   },
 
 ];
 
-/** Flat node with expandable and level information */
+/** interface para los nodos del árbol */
 interface ExampleFlatNode {
   expandable: boolean;
   name: string;
   level: number;
+  url:string;
 }
 
 @Component({
@@ -53,6 +60,7 @@ export class SideBarComponent implements OnInit {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
       level: level,
+      url:node.url
     };
   };
 

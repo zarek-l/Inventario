@@ -4,6 +4,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatTreeModule} from "@angular/material/tree";
 import {MatIconModule} from '@angular/material/icon';
+import {RouterModule} from "@angular/router";
 
 
 
@@ -14,11 +15,12 @@ import {MatIconModule} from '@angular/material/icon';
   exports: [
     SideBarComponent
   ],
-  imports: [
-    CommonModule,
-    MatSidenavModule,
-    MatTreeModule,
-    MatIconModule,
-  ]
+    imports: [
+        CommonModule,
+        MatSidenavModule,
+        MatTreeModule,
+        MatIconModule,
+        RouterModule,
+    ]
 })
 export class SideBarModule { }

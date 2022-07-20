@@ -1,1 +1,13 @@
+a li{
+  color:black;
+}
 
+a:link { text-decoration: none; }
+
+mat-tree-node.child:hover{
+  background: #71b266;
+}
+
+a li:hover{
+  color: white;
+}
