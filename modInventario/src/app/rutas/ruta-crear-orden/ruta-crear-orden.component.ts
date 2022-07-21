@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ruta-crear-orden.component.scss']
 })
 export class RutaCrearOrdenComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
