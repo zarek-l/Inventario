@@ -1,1 +1,70 @@
-<p>ruta-crear-kardex works!</p>
+<app-nav-bar></app-nav-bar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-side-bar></app-side-bar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <mat-card>
+      <mat-card-title>CREACIÓN DE KARDEX </mat-card-title><br>
+
+      <mat-card-subtitle>Detalle</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput>
+      </mat-form-field>
+
+      <mat-card-subtitle>Fecha</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>MM/DD/YYYY</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-grid-list cols="3" rows="1" rowHeight="5:1" ratio="7:3" >
+
+      <mat-grid-tile>
+        <mat-card-subtitle >Costo unitario</mat-card-subtitle>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card-subtitle >Cantidad Entrada</mat-card-subtitle>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card-subtitle>Cantidad salida</mat-card-subtitle>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input matInput>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input matInput>
+        </mat-form-field>
+      </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput>
+      </mat-form-field>
+    </mat-grid-tile>
+    </mat-grid-list>
+
+      <br><br><mat-grid-list cols="2"  rowHeight="5:1">
+        <mat-grid-tile>
+          <button class="aceptarBtn" mat-raised-button>Registrar</button>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <button class="cancelarBtn" mat-raised-button>Cancelar</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>
+
