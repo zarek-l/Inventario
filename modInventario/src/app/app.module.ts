@@ -20,7 +20,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavBarModule} from 'src/app/componentes/nav-bar/nav-bar.module';
 import {SideBarModule} from "./componentes/side-bar/side-bar.module";
-
+import {MatGridListModule} from '@angular/material/grid-list';
 //importar modules de firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -63,7 +63,8 @@ import { RutaListarKardexComponent } from './rutas/ruta-listar-kardex/ruta-lista
     RutaCrearBodegaComponent,
     RutaListarBodegaComponent,
     RutaCrearKardexComponent,
-    RutaListarKardexComponent
+    RutaListarKardexComponent,
+
   ],
     imports: [
         BrowserModule,
@@ -89,6 +90,7 @@ import { RutaListarKardexComponent } from './rutas/ruta-listar-kardex/ruta-lista
         AngularFireStorageModule,
         AngularFireDatabaseModule,
         SideBarModule,
+        MatGridListModule
     ],
   providers: [AuthService],
   bootstrap: [AppComponent]
