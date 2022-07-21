@@ -11,27 +11,27 @@ interface FoodNode {
 const TREE_DATA: FoodNode[] = [
   {
     name: 'Gestor de productos',
-    children: [{name: 'Creación de productos', url:'/dashboard'}, {name: 'Listado de productos', url:'dashboard'}],
+    children: [{name: 'Creación de productos', url:'/crear-producto'}, {name: 'Listado de productos', url:'/listar-producto'}],
     url:''
   },
   {
     name: 'Gestor de proveedores',
-    children: [{name: 'Creación de proveedor', url:'dashboard'}, {name: 'Listado de proveedores', url:'dashboard'}],
+    children: [{name: 'Creación de proveedor', url:'/crear-proveedor'}, {name: 'Listado de proveedores', url:'/listar-proveedor'}],
     url:''
   },
   {
     name: 'Gestor de ordenes de compra',
-    children: [{name: 'Creación de orden', url:'dashboard'}, {name: 'Listado de ordenes', url:'dashboard'}],
+    children: [{name: 'Creación de orden', url:'/crear-orden'}, {name: 'Listado de ordenes', url:'/listar-orden'}],
     url:''
   },
   {
     name: 'Gestor de bodega',
-    children: [{name: 'Creación de bodega', url:'dashboard'}, {name: 'Listado de bodegas', url:'dashboard'}],
+    children: [{name: 'Creación de bodega', url:'/crear-bodega'}, {name: 'Listado de bodegas', url:'/listar-bodega'}],
     url:''
   },
   {
     name: 'Gestor de kardex',
-    children: [{name: 'Creación de kardex', url:'dashboard'}, {name: 'Listado de kardex', url:'dashboard'}],
+    children: [{name: 'Creación de kardex', url:'/crear-kardex'}, {name: 'Listado de kardex', url:'/listar-kardex'}],
     url:''
   },
 
