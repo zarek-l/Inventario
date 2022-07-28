@@ -22,6 +22,6 @@ export class RutaCrearProductoComponent implements OnInit {
       categoria: categoria,
       precio: precio,
     });
-    this.mensaje = "Publicación realizada"
+    this.mensaje = "Producto registrado"
   }
 }
