@@ -7,14 +7,22 @@
   <mat-drawer-content>
 
     <mat-card>
-      <mat-card-title>CREACIÓN DE KARDEX </mat-card-title><br>
+      <mat-card-title>CREACIÓN DE INGRESO-EGRESO </mat-card-title><br>
 
       <mat-card-subtitle>Detalle</mat-card-subtitle>
       <mat-form-field class="example-full-width" appearance="fill">
         <input matInput>
       </mat-form-field>
 
-      <mat-card-subtitle>Fecha</mat-card-subtitle>
+      <mat-card-subtitle>Tipo de movimiento</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <select matNativeControl required>
+          <option value="Ingreso">Ingreso</option>
+          <option value="Egreso">Egreso</option>
+        </select>
+      </mat-form-field>
+
+      <mat-card-subtitle>Fecha del movimiento</mat-card-subtitle>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>MM/DD/YYYY</mat-label>
         <input matInput [matDatepicker]="picker">
@@ -22,10 +30,10 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-grid-list cols="3" rows="1" rowHeight="5:1" ratio="7:3" >
+      <mat-grid-list cols="2" rowHeight="6:1" >
 
       <mat-grid-tile>
-        <mat-card-subtitle >Costo unitario</mat-card-subtitle>
+        <mat-card-subtitle >Costo unitario(USD)</mat-card-subtitle>
       </mat-grid-tile>
 
       <mat-grid-tile>
@@ -33,27 +41,18 @@
       </mat-grid-tile>
 
       <mat-grid-tile>
-        <mat-card-subtitle>Cantidad salida</mat-card-subtitle>
-      </mat-grid-tile>
-
-      <mat-grid-tile>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="example-width" appearance="fill">
           <input matInput>
         </mat-form-field>
       </mat-grid-tile>
 
       <mat-grid-tile>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field class="example-width" appearance="fill">
           <input matInput>
         </mat-form-field>
       </mat-grid-tile>
-
-    <mat-grid-tile>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <input matInput>
-      </mat-form-field>
-    </mat-grid-tile>
     </mat-grid-list>
+
 
       <br><br><mat-grid-list cols="2"  rowHeight="5:1">
         <mat-grid-tile>
