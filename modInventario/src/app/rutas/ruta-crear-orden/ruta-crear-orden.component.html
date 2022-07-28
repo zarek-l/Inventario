@@ -9,29 +9,24 @@
     <mat-card>
       <mat-card-title>CREACIÓN DE ORDEN DE COMPRA </mat-card-title><br>
 
-      <mat-card-subtitle>Proveedor</mat-card-subtitle>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <select matNativeControl required>
-          <option value="Tecnología">Tecnología</option>
-          <option value="Insumos de oficina">Insumos de oficina</option>
-          <option value="Moviliario">Moviliario</option>
-        </select>
-      </mat-form-field>
-
       <mat-card-subtitle>Producto</mat-card-subtitle>
       <mat-form-field class="example-full-width" appearance="fill">
-        <select matNativeControl required>
-          <option value="Tecnología">Tecnología</option>
-          <option value="Insumos de oficina">Insumos de oficina</option>
-          <option value="Moviliario">Moviliario</option>
+        <select matNativeControl required #producto>
+          <option *ngFor="let i of descripcion"  [value]="i['descripcion']">{{i['descripcion']}}</option>
         </select>
       </mat-form-field>
 
+      <mat-card-subtitle>Proveedor</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <select matNativeControl required #proveedor>
+          <option *ngFor="let i of razon_social"  [value]="i['razon_social']">{{i['razon_social']}}</option>
+        </select>
+      </mat-form-field>
 
       <mat-card-subtitle>Fecha</mat-card-subtitle>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput #fecha [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -48,23 +43,24 @@
 
         <mat-grid-tile>
           <mat-form-field class="example-width" appearance="fill">
-            <input matInput>
+            <input matInput #cantidad >
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
-          <mat-form-field class="example-width" appearance="fill">
-            <input matInput>
+          <mat-form-field class="example-width" appearance="fill" >
+            <input matInput #total>
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile>
-          <button class="aceptarBtn" mat-raised-button>Registrar</button>
+          <button class="aceptarBtn" mat-raised-button (click)="crearOrden(proveedor.value, producto.value, fecha.value, +cantidad.value, +total.value)">Registrar</button>
         </mat-grid-tile>
         <mat-grid-tile>
           <button class="cancelarBtn" mat-raised-button>Cancelar</button>
         </mat-grid-tile>
       </mat-grid-list>
+      <h3 class="text-success">{{mensaje}}</h3>
     </mat-card>
   </mat-drawer-content>
 </mat-drawer-container>
