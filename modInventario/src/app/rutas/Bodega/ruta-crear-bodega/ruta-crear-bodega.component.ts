@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {initializeApp} from "firebase/app";
-import {environment} from "../../../environments/environment";
+import {environment} from "../../../../environments/environment";
 import {addDoc, collection, getFirestore} from "@angular/fire/firestore";
 
 @Component({
