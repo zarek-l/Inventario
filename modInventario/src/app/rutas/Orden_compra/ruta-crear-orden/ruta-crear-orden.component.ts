@@ -3,6 +3,7 @@ import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";
 import {addDoc, collection, getDocs, getFirestore} from "@angular/fire/firestore";
 import {DocumentData} from 'firebase/firestore';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ruta-crear-orden',
@@ -16,7 +17,9 @@ export class RutaCrearOrdenComponent implements OnInit {
   descripcion :DocumentData[]  =[];
   razon_social :DocumentData[]  =[];
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
     this.obtenerProducto()

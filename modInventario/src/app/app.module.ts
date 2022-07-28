@@ -17,12 +17,13 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavBarModule} from 'src/app/componentes/nav-bar/nav-bar.module';
 import {SideBarModule} from "./componentes/side-bar/side-bar.module";
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import {MatNativeDateModule} from '@angular/material/core';
+import {Router} from '@angular/router';
 //importar modules de firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -95,6 +96,7 @@ import { RutaListarKardexComponent } from './rutas/Kardex/ruta-listar-kardex/rut
         MatGridListModule,
         MatDatepickerModule,
         MatNativeDateModule,
+
     ],
   providers: [AuthService],
   bootstrap: [AppComponent]

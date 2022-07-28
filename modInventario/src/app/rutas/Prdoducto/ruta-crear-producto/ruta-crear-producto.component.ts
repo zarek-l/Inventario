@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {addDoc, collection, getFirestore} from "@angular/fire/firestore";
 import {environment} from "../../../../environments/environment";
 import { initializeApp } from 'firebase/app';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ruta-crear-producto',
@@ -12,7 +13,10 @@ export class RutaCrearProductoComponent implements OnInit {
   app = initializeApp(environment.firebase);
   db = getFirestore();
   mensaje: string  ="";
-  constructor() { }
+
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit(): void {
   }

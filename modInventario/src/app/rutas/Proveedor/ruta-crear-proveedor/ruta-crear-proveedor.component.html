@@ -44,7 +44,7 @@
           <button class="aceptarBtn" mat-raised-button (click)="crearProveedor(ruc.value, razon_social.value, correo.value, telefono.value, categoria.value)">Registrar</button>
         </mat-grid-tile>
         <mat-grid-tile>
-          <button class="cancelarBtn" mat-raised-button>Cancelar</button>
+          <button class="cancelarBtn" mat-raised-button (click)="router.navigate(['/inicio'])">Cancelar</button>
         </mat-grid-tile>
       </mat-grid-list>
       <h3 class="text-success">{{mensaje}}</h3>
