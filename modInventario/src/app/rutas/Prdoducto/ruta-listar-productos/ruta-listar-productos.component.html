@@ -10,7 +10,6 @@
 
       <table class="default"  style="background: #F3F3F3">
         <tr>
-          <th><strong></strong> </th>
           <th><strong>Categoría</strong> </th>
           <th><strong>Descripción</strong> </th>
           <th><strong>Precio</strong></th>
@@ -18,7 +17,6 @@
         </tr>
 
         <tr *ngFor=" let i of productos; let in = index">
-          <td>{{in+1}}</td>
           <td>{{i['categoria']}}</td>
           <td>{{i['descripcion']}}</td>
           <td>{{i['precio']}}</td>
