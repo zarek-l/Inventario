@@ -3,4 +3,40 @@
   <mat-drawer mode="side" opened>
     <app-side-bar></app-side-bar>
   </mat-drawer>
+  <mat-drawer-content>
+    <mat-card>
+      <mat-card-title>LISTADO DE PRODUCTOS </mat-card-title><br>
+
+
+      <table class="default">
+        <tr>
+          <th><strong>Fecha</strong> </th>
+          <th><strong>Producto</strong></th>
+          <th><strong>Cantidad</strong></th>
+          <th><strong>Proveedor</strong> </th>
+          <th><strong>Total</strong> </th>
+          <th><strong>Acciones</strong></th>
+        </tr>
+
+        <tr *ngFor=" let i of ordenes; let in = index">
+          <td>{{i['fecha']}}</td>
+          <td>{{i['producto']}}</td>
+          <td>{{i['cantidad']}}</td>
+          <td>{{i['proveedor']}}</td>
+          <td>{{i['total']}}</td>
+          <td>
+            <button class="btn">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button class="btn">
+              <mat-icon>create</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+      <tr>
+
+    </mat-card>
+  </mat-drawer-content>
+
 </mat-drawer-container>
