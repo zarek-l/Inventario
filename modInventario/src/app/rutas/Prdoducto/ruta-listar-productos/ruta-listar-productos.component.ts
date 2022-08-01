@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {collection, getDocs, getFirestore, query} from "@angular/fire/firestore";
 import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";

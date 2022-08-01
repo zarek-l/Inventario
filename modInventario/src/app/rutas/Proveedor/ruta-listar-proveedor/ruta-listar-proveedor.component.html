@@ -3,4 +3,40 @@
   <mat-drawer mode="side" opened>
     <app-side-bar></app-side-bar>
   </mat-drawer>
+  <mat-drawer-content>
+    <mat-card>
+      <mat-card-title>LISTADO DE PRODUCTOS </mat-card-title><br>
+
+
+      <table class="default"  style="background: #F3F3F3">
+        <tr>
+          <th><strong>Razón Social</strong></th>
+          <th><strong>RUC</strong></th>
+          <th><strong>Categoría</strong> </th>
+          <th><strong>Correo</strong> </th>
+          <th><strong>Teléfono</strong> </th>
+          <th><strong>Acciones</strong></th>
+        </tr>
+
+        <tr *ngFor=" let i of proveedores; let in = index">
+          <td>{{i['razon_social']}}</td>
+          <td>{{i['ruc']}}</td>
+          <td>{{i['categoria']}}</td>
+          <td>{{i['correo']}}</td>
+          <td>{{i['telefono']}}</td>
+          <td>
+            <button class="btn">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button class="btn">
+              <mat-icon>create</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+      <tr>
+
+    </mat-card>
+  </mat-drawer-content>
+
 </mat-drawer-container>
