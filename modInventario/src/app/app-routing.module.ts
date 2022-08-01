@@ -16,6 +16,7 @@ import {RutaListarBodegaComponent} from "./rutas/Bodega/ruta-listar-bodega/ruta-
 import {RutaListarKardexComponent} from "./rutas/Kardex/ruta-listar-kardex/ruta-listar-kardex.component";
 import {RutaCrearKardexComponent} from "./rutas/Kardex/ruta-crear-kardex/ruta-crear-kardex.component";
 import {RutaListarProductosComponent} from "./rutas/Prdoducto/ruta-listar-productos/ruta-listar-productos.component";
+import {RutaActuBodegaComponent} from "./rutas/Bodega/ruta-actu-bodega/ruta-actu-bodega.component";
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   },
   { path: 'listar-bodega',
     component: RutaListarBodegaComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'actu-bodega',
+    component: RutaActuBodegaComponent,
     canActivate: [AuthGuard]
   },
 

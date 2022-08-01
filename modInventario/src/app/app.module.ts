@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { RutaLoginComponent } from './rutas/ruta-login/ruta-login.component';
-import { RutaInicioComponent } from './rutas/ruta-inicio/ruta-inicio.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {RutaLoginComponent} from './rutas/ruta-login/ruta-login.component';
+import {RutaInicioComponent} from './rutas/ruta-inicio/ruta-inicio.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -23,7 +23,7 @@ import {SideBarModule} from "./componentes/side-bar/side-bar.module";
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import {Router} from '@angular/router';
+
 //importar modules de firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -47,6 +47,11 @@ import { RutaCrearBodegaComponent } from './rutas/Bodega/ruta-crear-bodega/ruta-
 import { RutaListarBodegaComponent } from './rutas/Bodega/ruta-listar-bodega/ruta-listar-bodega.component';
 import { RutaCrearKardexComponent } from './rutas/Kardex/ruta-crear-kardex/ruta-crear-kardex.component';
 import { RutaListarKardexComponent } from './rutas/Kardex/ruta-listar-kardex/ruta-listar-kardex.component';
+import { RutaActuBodegaComponent } from './rutas/Bodega/ruta-actu-bodega/ruta-actu-bodega.component';
+import { RutaActuKardexComponent } from './rutas/Kardex/ruta-actu-kardex/ruta-actu-kardex.component';
+import { RutaActuOrdenComponent } from './rutas/Orden_compra/ruta-actu-orden/ruta-actu-orden.component';
+import { RutaActuProductoComponent } from './rutas/Prdoducto/ruta-actu-producto/ruta-actu-producto.component';
+import { RutaActuProveedorComponent } from './rutas/Proveedor/ruta-actu-proveedor/ruta-actu-proveedor.component';
 
 
 @NgModule({
@@ -67,6 +72,11 @@ import { RutaListarKardexComponent } from './rutas/Kardex/ruta-listar-kardex/rut
     RutaListarBodegaComponent,
     RutaCrearKardexComponent,
     RutaListarKardexComponent,
+    RutaActuBodegaComponent,
+    RutaActuKardexComponent,
+    RutaActuOrdenComponent,
+    RutaActuProductoComponent,
+    RutaActuProveedorComponent,
 
   ],
     imports: [
