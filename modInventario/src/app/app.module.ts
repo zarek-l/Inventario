@@ -23,6 +23,7 @@ import {SideBarModule} from "./componentes/side-bar/side-bar.module";
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
 
 //importar modules de firebase
 import { AngularFireModule } from '@angular/fire/compat';
@@ -106,6 +107,7 @@ import { RutaActuProveedorComponent } from './rutas/Proveedor/ruta-actu-proveedo
         MatGridListModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        MatTableModule,
 
     ],
   providers: [AuthService],
