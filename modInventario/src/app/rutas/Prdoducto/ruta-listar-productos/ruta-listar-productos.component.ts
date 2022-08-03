@@ -24,20 +24,13 @@ export class RutaListarProductosComponent implements OnInit {
     this.obtenerProductos()
     //this.obtenerID()
   }
+
   async obtenerProductos(){
     this.productos = []
     let ProdCol = collection(this.db, 'productos');
     let ProdSnapshot =  query(ProdCol);
     let ProdQuery = await getDocs(ProdSnapshot)
     this.productos = ProdQuery.docs.map(doc => doc.data())
-  }
-
-  async obtenerID(){
-    this.idDoc = []
-    let ProdCol = collection(this.db, 'productos');
-    let ProdSnapshot =  query(ProdCol);
-    let ProdQuery = await getDocs(ProdSnapshot)
-    this.idDoc = ProdQuery.docs.map(doc => doc.id)
   }
 
   async actualizar(i: number) {

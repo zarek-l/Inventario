@@ -18,6 +18,7 @@ import {RutaCrearKardexComponent} from "./rutas/Kardex/ruta-crear-kardex/ruta-cr
 import {RutaListarProductosComponent} from "./rutas/Prdoducto/ruta-listar-productos/ruta-listar-productos.component";
 import {RutaActuBodegaComponent} from "./rutas/Bodega/ruta-actu-bodega/ruta-actu-bodega.component";
 import {RutaActuProductoComponent} from "./rutas/Prdoducto/ruta-actu-producto/ruta-actu-producto.component";
+import {RutaActuProveedorComponent} from "./rutas/Proveedor/ruta-actu-proveedor/ruta-actu-proveedor.component";
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
     component: RutaListarProductosComponent,
     canActivate: [AuthGuard]
   },
+  { path: 'actu-producto',
+    component: RutaActuProductoComponent,
+    canActivate: [AuthGuard]
+  },
 
   //CRUD PROVEEDOR
   { path: 'crear-proveedor',
@@ -60,8 +65,8 @@ const routes: Routes = [
     component: RutaListarProveedorComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'actu-producto',
-    component: RutaActuProductoComponent,
+  { path: 'actu-proveedor',
+    component: RutaActuProveedorComponent,
     canActivate: [AuthGuard]
   },
 

@@ -1,1 +1,53 @@
-<p>ruta-actu-proveedor works!</p>
+<app-nav-bar></app-nav-bar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-side-bar></app-side-bar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <mat-card>
+      <mat-card-title>CREACIÓN DE PROVEEDOR </mat-card-title><br>
+
+      <mat-card-subtitle>RUC</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput #ruc value="{{proveedor['ruc']}}">
+      </mat-form-field>
+
+      <mat-card-subtitle>Razón social</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput #razon_social value="{{proveedor['razon_social']}}">
+      </mat-form-field>
+
+      <mat-card-subtitle>Correo electrónico</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput #correo value="{{proveedor['correo']}}">
+      </mat-form-field>
+
+      <mat-card-subtitle>Teléfono</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput #telefono value="{{proveedor['telefono']}}">
+      </mat-form-field>
+
+      <mat-card-subtitle>Categoría</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <select matNativeControl required #categoria value="{{proveedor['categoria']}}">
+          <option value="Tecnología">Tecnología</option>
+          <option value="Insumos de oficina">Insumos de oficina</option>
+          <option value="Moviliario">Moviliario</option>
+        </select>
+      </mat-form-field>
+
+
+      <mat-grid-list cols="2" rowHeight="4:1">
+        <mat-grid-tile>
+          <button class="actualizarBtn" mat-raised-button (click)="actualizarProveedor(ruc.value, razon_social.value, correo.value, telefono.value, categoria.value)">Actualizar</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button class="cancelarBtn" mat-raised-button (click)="router.navigate(['/inicio'])">Cancelar</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <h3 class="text-success">{{mensaje}}</h3>
+    </mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>

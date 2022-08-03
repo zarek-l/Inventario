@@ -3,6 +3,7 @@ import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";
 import {collection, getDocs, getFirestore, query} from "@angular/fire/firestore";
 import {DocumentData} from "firebase/firestore";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ruta-listar-proveedor',
@@ -14,11 +15,13 @@ export class RutaListarProveedorComponent implements OnInit {
   db = getFirestore();
   proveedores: DocumentData[] = [];
   constructor(
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.obtenerProveedores()
   }
+
   async obtenerProveedores(){
     this.proveedores = []
     let ProvCol = collection(this.db, 'proveedores');
@@ -26,5 +29,15 @@ export class RutaListarProveedorComponent implements OnInit {
     let ProvQuery = await getDocs(ProvSnapshot)
     this.proveedores = ProvQuery.docs.map(doc => doc.data())
   }
+
+  async actualizar(i: number) {
+    let ProdCol = collection(this.db, 'proveedores');
+    let ProdSnapshot =  query(ProdCol);
+    let ProdQuery = await getDocs(ProdSnapshot)
+    let ids = ProdQuery.docs.map(doc => doc.id)
+    let idActualizar = ids[i]
+    this.router.navigate(['/actu-proveedor', { id: idActualizar }]);
+  }
+
 
 }
