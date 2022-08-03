@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {collection, getDocs, getFirestore, query} from "@angular/fire/firestore";
+import {collection, deleteDoc, doc, getDocs, getFirestore, query} from "@angular/fire/firestore";
 import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";
 import {DocumentData} from "firebase/firestore";
@@ -14,7 +14,6 @@ export class RutaListarProductosComponent implements OnInit {
   app = initializeApp(environment.firebase);
   db = getFirestore();
   productos: DocumentData[] = [];
-  idDoc : string[] = ['1','2'];
   constructor(
     private router: Router
   ) { }
@@ -22,7 +21,6 @@ export class RutaListarProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerProductos()
-    //this.obtenerID()
   }
 
   async obtenerProductos(){
@@ -40,6 +38,20 @@ export class RutaListarProductosComponent implements OnInit {
     let ids = ProdQuery.docs.map(doc => doc.id)
     let idActualizar = ids[i]
     this.router.navigate(['/actu-producto', { id: idActualizar }]);
+  }
+
+  async eliminar(i : number) {
+    let vehCol = collection(this.db, 'productos');
+    let vehSnapshot =  query(vehCol);
+    let vehiculoQ = await getDocs(vehSnapshot)
+    let ids = vehiculoQ.docs.map(doc => doc.id)
+    let idEliminar = ids[i]
+    this.eliminarDoc(idEliminar)
+  }
+  
+  async eliminarDoc(id:string){
+    await deleteDoc(doc(this.db, "productos", id));
+    this.obtenerProductos()
   }
 
 }
