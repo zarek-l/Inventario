@@ -1,1 +1,66 @@
-<p>ruta-actu-orden works!</p>
+<app-nav-bar></app-nav-bar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-side-bar></app-side-bar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <mat-card>
+      <mat-card-title>ACTUALIZACIÓN DE ORDEN </mat-card-title><br>
+
+      <mat-card-subtitle>Producto</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <select matNativeControl required #producto value="{{orden['producto']}}">
+          <option *ngFor="let i of descripcion"  [value]="i['descripcion']">{{i['descripcion']}}</option>
+        </select>
+      </mat-form-field>
+
+      <mat-card-subtitle>Proveedor</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <select matNativeControl required #proveedor value="{{orden['proveedor']}}">
+          <option *ngFor="let i of razon_social"  [value]="i['razon_social']">{{i['razon_social']}}</option>
+        </select>
+      </mat-form-field>
+
+      <mat-card-subtitle>Fecha</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>MM/DD/YYYY</mat-label>
+        <input matInput #fecha [matDatepicker]="picker" value="{{orden['fecha']}}">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-grid-list cols="2" rowHeight="6:1">
+
+        <mat-grid-tile >
+          <mat-card-subtitle class="col">Cantidad</mat-card-subtitle>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-card-subtitle class="col">Total</mat-card-subtitle>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="example-width" appearance="fill">
+            <input matInput #cantidad value="{{orden['cantidad']}}">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field class="example-width" appearance="fill" >
+            <input matInput #total value="{{orden['total']}}">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <button class="actualizarBtn" mat-raised-button (click)="actualizarOrden(proveedor.value, producto.value, fecha.value, +cantidad.value, +total.value)">Actualizar</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button class="cancelarBtn" mat-raised-button (click)="router.navigate(['/inicio']);">Cancelar</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <h3 class="text-success">{{mensaje}}</h3>
+    </mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>

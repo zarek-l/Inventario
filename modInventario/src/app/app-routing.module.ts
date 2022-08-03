@@ -19,6 +19,7 @@ import {RutaListarProductosComponent} from "./rutas/Prdoducto/ruta-listar-produc
 import {RutaActuBodegaComponent} from "./rutas/Bodega/ruta-actu-bodega/ruta-actu-bodega.component";
 import {RutaActuProductoComponent} from "./rutas/Prdoducto/ruta-actu-producto/ruta-actu-producto.component";
 import {RutaActuProveedorComponent} from "./rutas/Proveedor/ruta-actu-proveedor/ruta-actu-proveedor.component";
+import {RutaActuOrdenComponent} from "./rutas/Orden_compra/ruta-actu-orden/ruta-actu-orden.component";
 
 const routes: Routes = [
   {
@@ -77,6 +78,10 @@ const routes: Routes = [
   },
   { path: 'listar-orden',
     component: RutaListarOrdenComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'actu-orden',
+    component: RutaActuOrdenComponent,
     canActivate: [AuthGuard]
   },
 

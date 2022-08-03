@@ -3,6 +3,7 @@ import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";
 import {collection, getDocs, getFirestore, query} from "@angular/fire/firestore";
 import {DocumentData} from "firebase/firestore";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ruta-listar-orden',
@@ -15,6 +16,7 @@ export class RutaListarOrdenComponent implements OnInit {
   db = getFirestore();
   ordenes: DocumentData[] = [];
   constructor(
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +28,15 @@ export class RutaListarOrdenComponent implements OnInit {
     let OrdSnapshot =  query(OrdCol);
     let OrdQuery = await getDocs(OrdSnapshot)
     this.ordenes = OrdQuery.docs.map(doc => doc.data())
+  }
+
+  async actualizar(i: number) {
+    let ProdCol = collection(this.db, 'orden_compra');
+    let ProdSnapshot =  query(ProdCol);
+    let ProdQuery = await getDocs(ProdSnapshot)
+    let ids = ProdQuery.docs.map(doc => doc.id)
+    let idActualizar = ids[i]
+    this.router.navigate(['/actu-orden', { id: idActualizar }]);
   }
 
 }
