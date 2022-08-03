@@ -11,12 +11,12 @@
 
       <mat-card-subtitle>Nombre de la Bodega</mat-card-subtitle>
       <mat-form-field class="example-full-width" appearance="fill">
-        <input matInput #nombre_bodega>
+        <input matInput #nombre_bodega value="{{bodega['nombre_bodega']}}">
       </mat-form-field>
 
       <mat-card-subtitle>Dirección</mat-card-subtitle>
       <mat-form-field class="example-full-width" appearance="fill">
-        <input matInput #direccion>
+        <input matInput #direccion value="{{bodega['direccion']}}">
       </mat-form-field>
 
       <mat-grid-list cols="2" rowHeight="4:1">

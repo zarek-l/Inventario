@@ -27,19 +27,19 @@ export class RutaActuBodegaComponent implements OnInit {
     this.obtenerBodega()
   }
 
-  async obtenerBodega(){
-    let docRef = doc(this.db, "vehiculos", this.idBodega);
+  async obtenerBodega() {
+    let docRef = doc(this.db, "bodegas", this.idBodega);
     let docSnap = await getDoc(docRef)
     console.log(docSnap.data())
     this.bodega =docSnap.data()!!
   }
 
-  async actualizarBodega (nombreBodega:string, ubicacion:string) {
-    let refDoc = doc(this.db, "vehiculos", this.idBodega);
+  async actualizarBodega(nombre_bodega:string, direccion:string) {
+    let refDoc = doc(this.db, "bodegas", this.idBodega);
     await updateDoc(refDoc,{
-      nombreBodega: nombreBodega,
-      ubicacion: ubicacion,
+      nombre_bodega: nombre_bodega,
+      direccion: direccion
     })
-    this.mensaje = "Bodega actualizada"
+    this.mensaje = "Actualización de bodega realizada"
   }
 }
