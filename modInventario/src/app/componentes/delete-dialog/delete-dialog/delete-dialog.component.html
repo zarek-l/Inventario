@@ -1,1 +1,8 @@
-<p>delete-dialog works!</p>
+<h1 mat-dialog-title>Confirmar eliminación</h1>
+<div mat-dialog-content>
+  <p>Seguro que desea eliminar este registro?</p>
+</div>
+<div mat-dialog-actions>
+  <button class ="eliminarBtn" mat-button mat-dialog-close (click)="cerrarDialogo()">Eliminar</button>
+  <button class ="cancelarBtn" mat-button (click)="onNoClick()">Cancelar</button>
+</div>
