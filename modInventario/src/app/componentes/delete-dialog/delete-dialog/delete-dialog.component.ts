@@ -20,11 +20,11 @@ export class DeleteDialogComponent implements OnInit {
     console.log(this.data)
   }
 
-  onNoClick(): void {
+  cancelar(): void {
     this.dialogRef.close({estado: 'false'});
   }
 
-  cerrarDialogo(){
+  eliminarRegistro(){
     this.dialogRef.close({estado: 'true'})
   }
 
