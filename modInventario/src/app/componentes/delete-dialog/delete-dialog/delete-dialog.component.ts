@@ -1,7 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {collection, deleteDoc, doc, getDocs, query} from "@angular/fire/firestore";
-
 
 @Component({
   selector: 'app-delete-dialog',
@@ -27,7 +25,5 @@ export class DeleteDialogComponent implements OnInit {
   eliminarRegistro(){
     this.dialogRef.close({estado: 'true'})
   }
-
-
 
 }
