@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";
-import {collection, getDocs, getFirestore, query} from "@angular/fire/firestore";
+import {collection, deleteDoc, doc, getDocs, getFirestore, query} from "@angular/fire/firestore";
 import {DocumentData} from "firebase/firestore";
 import {Router} from "@angular/router";
+import {DeleteDialogComponent} from "../../../componentes/delete-dialog/delete-dialog/delete-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-ruta-listar-bodega',
@@ -15,13 +17,14 @@ export class RutaListarBodegaComponent implements OnInit {
   db = getFirestore();
   bodegas: DocumentData[] = [];
   constructor(
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
-    this.obtenerOrdenes()
+    this.obtenerBodegas()
   }
-  async obtenerOrdenes(){
+  async obtenerBodegas(){
     this.bodegas = []
     let BodCol = collection(this.db, 'bodegas');
     let BodSnapshot =  query(BodCol);
@@ -29,11 +32,47 @@ export class RutaListarBodegaComponent implements OnInit {
     this.bodegas = BodQuery.docs.map(doc => doc.data())
   }
   async actualizar(i: number) {
-    let ProdCol = collection(this.db, 'bodegas');
-    let ProdSnapshot =  query(ProdCol);
-    let ProdQuery = await getDocs(ProdSnapshot)
-    let ids = ProdQuery.docs.map(doc => doc.id)
+    let BodCol = collection(this.db, 'bodegas');
+    let BodSnapshot =  query(BodCol);
+    let BodQuery = await getDocs(BodSnapshot)
+    let ids = BodQuery.docs.map(doc => doc.id)
     let idActualizar = ids[i]
     this.router.navigate(['/actu-bodega', { id: idActualizar }]);
+  }
+  async eliminar(i : number) {
+    let BodCol = collection(this.db, 'bodegas');
+    let BodSnapshot =  query(BodCol);
+    let BodQ = await getDocs(BodSnapshot)
+    let ids = BodQ.docs.map(doc => doc.id)
+    let idEliminar = ids[i]
+    this.eliminarDoc(idEliminar)
+  }
+
+  async eliminarDoc(id:string){
+    await deleteDoc(doc(this.db, "bodegas", id));
+    this.obtenerBodegas()
+  }
+
+  abrirDialogoEliminar(posicion:number): void {
+    const referenciaDialogo = this.dialog.open(
+      DeleteDialogComponent,{
+        disableClose : true,
+        data:{
+          posicion
+        }
+      }
+    );
+    const despuesCerrado$ = referenciaDialogo.afterClosed();
+    despuesCerrado$
+      .subscribe(
+        (datos) => {
+          if(datos.estado == 'true'){
+            this.eliminar(posicion)
+          }
+          else{
+            console.log('accion cancelada')
+          }
+        }
+      )
   }
 }
