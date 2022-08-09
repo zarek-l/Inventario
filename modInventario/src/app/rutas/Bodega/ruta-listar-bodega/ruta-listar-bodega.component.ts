@@ -75,4 +75,8 @@ export class RutaListarBodegaComponent implements OnInit {
         }
       )
   }
+
+  async listarCasilleros(i : number){
+    
+  }
 }

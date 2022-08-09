@@ -53,6 +53,9 @@ import { RutaActuKardexComponent } from './rutas/Kardex/ruta-actu-kardex/ruta-ac
 import { RutaActuOrdenComponent } from './rutas/Orden_compra/ruta-actu-orden/ruta-actu-orden.component';
 import { RutaActuProductoComponent } from './rutas/Prdoducto/ruta-actu-producto/ruta-actu-producto.component';
 import { RutaActuProveedorComponent } from './rutas/Proveedor/ruta-actu-proveedor/ruta-actu-proveedor.component';
+import { RutaListarCasilleroComponent } from './rutas/Bodega/Casillero/ruta-listar-casillero/ruta-listar-casillero.component';
+import { RutaCrearCasilleroComponent } from './rutas/Bodega/Casillero/ruta-crear-casillero/ruta-crear-casillero.component';
+import { RutaActuCasilleroComponent } from './rutas/Bodega/Casillero/ruta-actu-casillero/ruta-actu-casillero.component';
 
 
 @NgModule({
@@ -78,6 +81,9 @@ import { RutaActuProveedorComponent } from './rutas/Proveedor/ruta-actu-proveedo
     RutaActuOrdenComponent,
     RutaActuProductoComponent,
     RutaActuProveedorComponent,
+    RutaListarCasilleroComponent,
+    RutaCrearCasilleroComponent,
+    RutaActuCasilleroComponent,
 
   ],
     imports: [
