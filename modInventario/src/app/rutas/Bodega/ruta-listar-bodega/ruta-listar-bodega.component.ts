@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";
-import {collection, deleteDoc, doc, getDocs, getFirestore, query} from "@angular/fire/firestore";
+import {addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query} from "@angular/fire/firestore";
 import {DocumentData} from "firebase/firestore";
 import {Router} from "@angular/router";
 import {DeleteDialogComponent} from "../../../componentes/delete-dialog/delete-dialog/delete-dialog.component";
@@ -76,7 +76,13 @@ export class RutaListarBodegaComponent implements OnInit {
       )
   }
 
-  async listarCasilleros(i : number){
-    
+  async listarCasillerosPorBodega(i : number){
+    let BodCol = collection(this.db, 'bodegas');
+    let BodSnapshot =  query(BodCol);
+    let BodQuery = await getDocs(BodSnapshot)
+    let ids = BodQuery.docs.map(doc => doc.id)
+    let idBodega = ids[i]
+    this.router.navigate(['/listar-casillero', { id: idBodega }]);
   }
+
 }

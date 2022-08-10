@@ -1,1 +1,47 @@
-<p>ruta-listar-casillero works!</p>
+<app-nav-bar></app-nav-bar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-side-bar></app-side-bar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-card>
+      <mat-grid-list cols="3" rowHeight="3:1">
+        <mat-grid-tile>
+          <mat-card-title>LISTADO DE CASILLEROS</mat-card-title>
+        </mat-grid-tile>
+        <mat-grid-tile>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button class="btnAdd" mat-flat-button color="primary" (click)="AgregarCasillerosPorBodega()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <br>
+
+      <table class="default">
+        <tr>
+          <th><strong>Nombre Casillero</strong> </th>
+          <th><strong>Capacidad</strong></th>
+          <th><strong>Acciones</strong></th>
+        </tr>
+
+        <tr *ngFor=" let i of casilleros; let in = index">
+          <td>{{i['nombre_bodega']}}</td>
+          <td>{{i['direccion']}}</td>
+          <td>
+            <button class="btn">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button class="btn" class="btn">
+              <mat-icon>create</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+      <tr>
+
+    </mat-card>
+  </mat-drawer-content>
+
+</mat-drawer-container>

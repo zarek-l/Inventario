@@ -20,6 +20,13 @@ import {RutaActuBodegaComponent} from "./rutas/Bodega/ruta-actu-bodega/ruta-actu
 import {RutaActuProductoComponent} from "./rutas/Prdoducto/ruta-actu-producto/ruta-actu-producto.component";
 import {RutaActuProveedorComponent} from "./rutas/Proveedor/ruta-actu-proveedor/ruta-actu-proveedor.component";
 import {RutaActuOrdenComponent} from "./rutas/Orden_compra/ruta-actu-orden/ruta-actu-orden.component";
+import {
+  RutaCrearCasilleroComponent
+} from "./rutas/Bodega/Casillero/ruta-crear-casillero/ruta-crear-casillero.component";
+import {
+  RutaListarCasilleroComponent
+} from "./rutas/Bodega/Casillero/ruta-listar-casillero/ruta-listar-casillero.component";
+import {RutaActuCasilleroComponent} from "./rutas/Bodega/Casillero/ruta-actu-casillero/ruta-actu-casillero.component";
 
 const routes: Routes = [
   {
@@ -96,6 +103,20 @@ const routes: Routes = [
   },
   { path: 'actu-bodega',
     component: RutaActuBodegaComponent,
+    canActivate: [AuthGuard]
+  },
+
+  //CRUD CASILLERO
+  { path: 'crear-casillero',
+    component: RutaCrearCasilleroComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'listar-casillero',
+    component: RutaListarCasilleroComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'actu-casillero',
+    component: RutaActuCasilleroComponent,
     canActivate: [AuthGuard]
   },
 

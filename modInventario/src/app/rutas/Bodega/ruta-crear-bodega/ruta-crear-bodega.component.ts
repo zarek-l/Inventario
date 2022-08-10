@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";
-import {addDoc, collection, getFirestore} from "@angular/fire/firestore";
+import {addDoc, collection, getDocs, getFirestore, query} from "@angular/fire/firestore";
 import { Router } from '@angular/router';
+import {DocumentData} from "firebase/firestore";
 
 
 @Component({
@@ -22,7 +23,7 @@ export class RutaCrearBodegaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async crearOrden(nombre_bodega:string, direccion:string) {
+  async crearBodega(nombre_bodega:string, direccion:string) {
     let docRef = await addDoc(collection(this.db, "bodegas"), {
       nombre_bodega: nombre_bodega,
       direccion: direccion
