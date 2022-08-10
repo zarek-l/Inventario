@@ -30,10 +30,10 @@
           <td>{{i['nombre_casillero']}}</td>
           <td>{{i['capacidad']}}</td>
           <td>
-            <button class="btn">
+            <button class="btn" (click)="abrirDialogoEliminar(in)">
               <mat-icon>delete</mat-icon>
             </button>
-            <button class="btn" class="btn">
+            <button class="btn" class="btn"  (click)="actualizar(in)">
               <mat-icon>create</mat-icon>
             </button>
           </td>

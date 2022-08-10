@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {environment} from "../../../../../environments/environment";
-import {collection, getDocs, getFirestore, query} from "@angular/fire/firestore";
+import {collection, deleteDoc, doc, getDocs, getFirestore, query} from "@angular/fire/firestore";
 import {DocumentData} from "firebase/firestore";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
+import {DeleteDialogComponent} from "../../../../componentes/delete-dialog/delete-dialog/delete-dialog.component";
 
 @Component({
   selector: 'app-ruta-listar-casillero',
@@ -38,6 +39,52 @@ export class RutaListarCasilleroComponent implements OnInit {
 
   async AgregarCasillerosPorBodega(){
     this.router.navigate(['/crear-casillero', { id: this.idBodega }]);
+  }
+
+  abrirDialogoEliminar(posicion:number): void {
+    const referenciaDialogo = this.dialog.open(
+      DeleteDialogComponent,{
+        disableClose : true,
+        data:{
+          posicion
+        }
+      }
+    );
+    const despuesCerrado$ = referenciaDialogo.afterClosed();
+    despuesCerrado$
+      .subscribe(
+        (datos) => {
+          if(datos.estado == 'true'){
+            this.eliminar(posicion)
+          }
+          else{
+            console.log('accion cancelada')
+          }
+        }
+      )
+  }
+
+  async eliminar(i : number) {
+    let CasCol = collection(this.db, 'bodegas',this.idBodega,'casilleros');
+    let CasSnapshot =  query(CasCol);
+    let CasQ = await getDocs(CasSnapshot)
+    let ids = CasQ.docs.map(doc => doc.id)
+    let idEliminar = ids[i]
+    this.eliminarDoc(idEliminar)
+  }
+
+  async eliminarDoc(id:string){
+    await deleteDoc(doc(this.db, 'bodegas',this.idBodega,'casilleros', id));
+    this.obtenerCasilleros()
+  }
+
+  async actualizar(i: number) {
+    let CasCol = collection(this.db, 'bodegas',this.idBodega,'casilleros');
+    let CasSnapshot =  query(CasCol);
+    let CasQuery = await getDocs(CasSnapshot)
+    let ids = CasQuery.docs.map(doc => doc.id)
+    let idCasillero = ids[i]
+    this.router.navigate(['/actu-casillero', { id: idCasillero }]);
   }
 
 }
