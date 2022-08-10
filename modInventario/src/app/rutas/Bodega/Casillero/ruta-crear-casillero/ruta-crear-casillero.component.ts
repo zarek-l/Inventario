@@ -31,7 +31,7 @@ export class RutaCrearCasilleroComponent implements OnInit {
       capacidad: capacidad
     });
     this.mensaje = "Casillero registrado"
-    this.router.navigate(['/listar-casillero'])
+    this.router.navigate(['/listar-bodega'])
   }
 
 }
