@@ -3,4 +3,40 @@
   <mat-drawer mode="side" opened>
     <app-side-bar></app-side-bar>
   </mat-drawer>
+  <mat-drawer-content>
+    <mat-card>
+      <mat-card-title>KARDEX</mat-card-title><br>
+
+
+      <table class="default">
+        <tr>
+          <th><strong>Fecha</strong> </th>
+          <th><strong>Producto</strong></th>
+          <th><strong>Tipo</strong> </th>
+          <th><strong>Cantidad</strong></th>
+          <th><strong>Costo unitario</strong> </th>
+          <th><strong>Acciones</strong></th>
+        </tr>
+
+        <tr *ngFor=" let i of movimientos; let in = index">
+          <td>{{i['fecha']}}</td>
+          <td>{{i['orden_producto']}}</td>
+          <td>{{i['tipo']}}</td>
+          <td>{{i['cantidad']}}</td>
+          <td>{{i['costo_unitario']}}</td>
+          <td>
+            <button class="btn" (click)="abrirDialogoEliminar(in)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button class="btn" class="btn" (click)="actualizar(in)">
+              <mat-icon>create</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+      <tr>
+
+    </mat-card>
+  </mat-drawer-content>
+
 </mat-drawer-container>

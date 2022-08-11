@@ -27,6 +27,7 @@ import {
   RutaListarCasilleroComponent
 } from "./rutas/Bodega/Casillero/ruta-listar-casillero/ruta-listar-casillero.component";
 import {RutaActuCasilleroComponent} from "./rutas/Bodega/Casillero/ruta-actu-casillero/ruta-actu-casillero.component";
+import {RutaActuKardexComponent} from "./rutas/Kardex/ruta-actu-kardex/ruta-actu-kardex.component";
 
 const routes: Routes = [
   {
@@ -127,6 +128,10 @@ const routes: Routes = [
   },
   { path: 'listar-kardex',
     component: RutaListarKardexComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'actu-kardex',
+    component: RutaActuKardexComponent,
     canActivate: [AuthGuard]
   },
 ];
