@@ -31,7 +31,7 @@ const TREE_DATA: FoodNode[] = [
   },
   {
     name: 'Gestor de kardex',
-    children: [{name: 'Creación de kardex', url:'/crear-kardex'}, {name: 'Listado de kardex', url:'/listar-kardex'}],
+    children: [{name: 'Creación de movimiento', url:'/crear-kardex'}, {name: 'Listado de kardex', url:'/listar-kardex'}],
     url:''
   },
 
