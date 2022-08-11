@@ -27,7 +27,7 @@
       <mat-card-subtitle>Fecha del movimiento</mat-card-subtitle>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>MM/DD/YYYY</mat-label>
-        <input matInput #fecha value="{{movimiento['fecha']}}" [matDatepicker]="picker" >
+        <input matInput #fecha [matDatepicker]="picker" >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
