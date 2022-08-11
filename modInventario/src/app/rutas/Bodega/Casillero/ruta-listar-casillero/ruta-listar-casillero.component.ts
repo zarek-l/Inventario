@@ -84,7 +84,7 @@ export class RutaListarCasilleroComponent implements OnInit {
     let CasQuery = await getDocs(CasSnapshot)
     let ids = CasQuery.docs.map(doc => doc.id)
     let idCasillero = ids[i]
-    this.router.navigate(['/actu-casillero', { id: idCasillero }]);
+    this.router.navigate(['/actu-casillero',{ idC: idCasillero, idB: this.idBodega }]);
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";
-import {addDoc, collection, doc, getDoc, getDocs, getFirestore, query, updateDoc, where} from "@angular/fire/firestore";
+import { doc, getDoc, getFirestore, updateDoc} from "@angular/fire/firestore";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DocumentData} from "firebase/firestore";
 
