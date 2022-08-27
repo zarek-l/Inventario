@@ -45,7 +45,6 @@ export class AuthService {
       });
   }
 
-  // Send email verification when new user sign up
   SendVerificationMail() {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
@@ -53,12 +52,12 @@ export class AuthService {
         this.router.navigate(['verificar-email']);
       });
   }
-  // Reset Forggot password
+// Reset Forgot password
   ForgotPassword(passwordResetEmail: string) {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        window.alert('Email para cambiar contraseña enviado.');
       })
       .catch((error) => {
         window.alert(error);
@@ -81,8 +80,7 @@ export class AuthService {
     const userData: Usuario = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
+      rol: "Administrador"
     };
     return userRef.set(userData, {
       merge: true,

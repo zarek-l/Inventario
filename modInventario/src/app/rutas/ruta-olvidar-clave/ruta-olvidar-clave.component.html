@@ -5,7 +5,7 @@
     <div class="formGroup " style="margin-left: 200px ; margin-right: 200px ">
       <input type="email" class="form-control text-center " placeholder="Email Address" #passwordResetEmail required>
       <div class="m-3">
-        <button type="button" class="resetearBtn" mat-stroked-button color="primary" (click)="authService.ForgotPassword(passwordResetEmail.value)">
+        <button type="button" class="resetearBtn" mat-stroked-button color="primary"  (click)="auth.ForgotPassword(passwordResetEmail.value)">
           <i class="fas fa-key"></i>
           Resetear Contraseña
         </button>

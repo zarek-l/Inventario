@@ -9,10 +9,10 @@ import { AuthService } from "../../servicios/auth.service";
 export class RutaOlvidarClaveComponent implements OnInit {
 
   constructor(
-    public authService: AuthService
+    public auth: AuthService
   ) { }
-
-  ngOnInit(): void {
+  ngOnInit() {
   }
-
 }
+
+

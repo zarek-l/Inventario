@@ -39,6 +39,11 @@ const routes: Routes = [
     component: RutaInicioComponent
   },
   {
+    path: '',
+    redirectTo:'/login',
+    pathMatch:'full'
+  },
+  {
     path: 'olvidar-clave',
     component: RutaOlvidarClaveComponent
   },
