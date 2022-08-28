@@ -58,7 +58,7 @@
 
       <br><br><mat-grid-list cols="2"  rowHeight="5:1">
       <mat-grid-tile>
-        <button class="actualizarBtn" mat-raised-button (click)="actualizarMovimiento(orden_producto.value, tipo.value, fecha.value, +costo_unitario.value, +cantidad.value )">Actualizar</button>
+        <button class="actualizarBtn" mat-raised-button (click)="actualizarMovimiento(orden_producto.value, tipo.value, fecha.value, +costo_unitario.value, +cantidad.value )"(click)="orden_producto.value=''"(click)="tipo.value=''"(click)="fecha.value=''"(click)="costo_unitario.value=''"(click)="cantidad.value=''">Actualizar</button>
       </mat-grid-tile>
 
       <mat-grid-tile>

@@ -21,7 +21,7 @@
 
       <mat-grid-list cols="2" rowHeight="4:1">
         <mat-grid-tile>
-          <button class="actualizarBtn" mat-raised-button (click)="actualizarCasillero(nombre_casillero.value, capacidad.value)">Actualizar</button>
+          <button class="actualizarBtn" mat-raised-button (click)="actualizarCasillero(nombre_casillero.value, capacidad.value)" (click)="nombre_casillero.value=''"(click)="capacidad.value=''" >Actualizar</button>
         </mat-grid-tile>
         <mat-grid-tile>
           <button class="cancelarBtn" mat-raised-button (click)="router.navigate(['/listar-casillero'])">Cancelar</button>

@@ -21,7 +21,7 @@
 
       <mat-grid-list cols="2" rowHeight="4:1">
         <mat-grid-tile>
-          <button class="aceptarBtn" mat-raised-button (click)="crearBodega(nombre_bodega.value, direccion.value)">Registrar</button>
+          <button class="aceptarBtn" mat-raised-button (click)="crearBodega(nombre_bodega.value, direccion.value)"(click)="nombre_bodega.value=''" (click)="direccion.value=''">Registrar</button>
         </mat-grid-tile>
         <mat-grid-tile>
           <button class="cancelarBtn" mat-raised-button (click)="router.navigate(['/inicio'])"> Cancelar</button>

@@ -15,7 +15,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from '@angular/material/select';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavBarModule} from 'src/app/componentes/nav-bar/nav-bar.module';
@@ -114,6 +114,7 @@ import { RutaActuCasilleroComponent } from './rutas/Bodega/Casillero/ruta-actu-c
         MatDatepickerModule,
         MatNativeDateModule,
         MatTableModule,
+        FormsModule,
 
     ],
   providers: [AuthService],

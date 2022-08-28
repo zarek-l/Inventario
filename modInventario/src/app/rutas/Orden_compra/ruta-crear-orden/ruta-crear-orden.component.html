@@ -54,7 +54,7 @@
         </mat-grid-tile>
 
         <mat-grid-tile>
-          <button class="aceptarBtn" mat-raised-button (click)="crearOrden(proveedor.value, producto.value, fecha.value, +cantidad.value, +total.value)">Registrar</button>
+          <button class="aceptarBtn" mat-raised-button (click)="crearOrden(proveedor.value, producto.value, fecha.value, +cantidad.value, +total.value)" (click)="proveedor.value=''"(click)="producto.value=''" (click)="fecha.value=''"(click)="cantidad.value=''"(click)="total.value=''">Registrar</button>
         </mat-grid-tile>
         <mat-grid-tile>
           <button class="cancelarBtn" mat-raised-button (click)="router.navigate(['/inicio']);" >Cancelar</button>

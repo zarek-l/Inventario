@@ -13,12 +13,15 @@ export class RutaCrearProductoComponent implements OnInit {
   app = initializeApp(environment.firebase);
   db = getFirestore();
   mensaje: string  ="";
+  valor:any;
 
   constructor(
     public router: Router
+
   ) { }
 
   ngOnInit(): void {
+
   }
   async crearProducto(descripcion:string, categoria:string,precio:number) {
     let docRef = await addDoc(collection(this.db, "productos"), {
@@ -27,5 +30,6 @@ export class RutaCrearProductoComponent implements OnInit {
       precio: precio,
     });
     this.mensaje = "Producto registrado"
+
   }
 }

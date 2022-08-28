@@ -29,7 +29,7 @@
       </mat-form-field>
       <mat-grid-list cols="2" rowHeight="4:1">
         <mat-grid-tile>
-          <button class="actualizarBtn" mat-raised-button (click)="actualizarProducto(descripcion.value, categoria.value, +precio.value)">Actualizar</button>
+          <button class="actualizarBtn" mat-raised-button (click)="actualizarProducto(descripcion.value, categoria.value, +precio.value)"(click)="descripcion.value=''"(click)="categoria.value=''" (click)="precio.value=''">Actualizar</button>
         </mat-grid-tile>
         <mat-grid-tile>
           <button class="cancelarBtn" mat-raised-button (click)="router.navigate(['/inicio'])">Cancelar</button>
