@@ -85,4 +85,13 @@ export class RutaListarBodegaComponent implements OnInit {
     this.router.navigate(['/listar-casillero', { id: idBodega }]);
   }
 
+  async listarMovimientosPorBodega(i : number){
+    let BodCol = collection(this.db, 'bodegas');
+    let BodSnapshot =  query(BodCol);
+    let BodQuery = await getDocs(BodSnapshot)
+    let ids = BodQuery.docs.map(doc => doc.id)
+    let idBodega = ids[i]
+    this.router.navigate(['/listar-movimientos', { id: idBodega }]);
+  }
+
 }

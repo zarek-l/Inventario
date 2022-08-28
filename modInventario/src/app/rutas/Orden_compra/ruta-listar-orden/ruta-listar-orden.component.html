@@ -12,8 +12,9 @@
         <tr>
           <th><strong>Fecha</strong> </th>
           <th><strong>Producto</strong></th>
-          <th><strong>Cantidad</strong></th>
           <th><strong>Proveedor</strong> </th>
+          <th><strong>Cantidad</strong></th>
+          <th><strong>Costo Unidad</strong> </th>
           <th><strong>Total</strong> </th>
           <th><strong>Acciones</strong></th>
         </tr>
@@ -21,8 +22,9 @@
         <tr *ngFor=" let i of ordenes; let in = index">
           <td>{{i['fecha']}}</td>
           <td>{{i['producto']}}</td>
-          <td>{{i['cantidad']}}</td>
           <td>{{i['proveedor']}}</td>
+          <td>{{i['cantidad']}}</td>
+          <td>{{i['costoUnidad']}}</td>
           <td>{{i['total']}}</td>
           <td>
             <button class="btn" (click)="abrirDialogoEliminar(in)">

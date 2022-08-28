@@ -16,14 +16,14 @@
           <th><strong>Costo unitario instantáneo</strong></th>
         </tr>
 
-        <tr *ngFor=" let i of bodegas; let in = index">
+        <tr *ngFor=" let i of movBodega; let in = index">
           <td>{{i['nombre_bodega']}}</td>
           <td>{{i['direccion']}}</td>
           <td>
             <button class="btn" (click)="abrirDialogoEliminar(in)">
               <mat-icon>delete</mat-icon>
             </button>
-            <button class="btn" class="btn" (click)="listarCasillerosPorBodega(in)">
+            <button class="btn" class="btn" >
               <mat-icon>move_to_inbox</mat-icon>
             </button>
           </td>

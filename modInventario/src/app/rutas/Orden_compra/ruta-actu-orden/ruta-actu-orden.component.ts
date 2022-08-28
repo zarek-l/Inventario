@@ -50,14 +50,15 @@ export class RutaActuOrdenComponent implements OnInit {
     this.orden =docSnap.data()!!
   }
 
-  async actualizarOrden(proveedor:string, producto:string,fecha:string, cantidad:number, total:number) {
+  async actualizarOrden(proveedor:string, producto:string,fecha:string, cantidad:number, costoUnidad: number) {
     let refDoc = doc(this.db, "orden_compra", this.idOrden);
     await updateDoc(refDoc, {
       proveedor: proveedor,
       producto: producto,
       fecha: fecha,
       cantidad: cantidad,
-      total: total,
+      costoUnidad:costoUnidad,
+      total: cantidad*costoUnidad,
     })
     this.mensaje = "Actualización de orden de compra"
   }

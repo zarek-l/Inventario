@@ -34,12 +34,11 @@ export class RutaActuProductoComponent implements OnInit {
     this.producto =docSnap.data()!!
   }
 
-  async actualizarProducto(descripcion:string, categoria:string,precio:number) {
+  async actualizarProducto(descripcion:string, categoria:string) {
     let refDoc = doc(this.db, "productos", this.idProducto);
     await updateDoc(refDoc,{
       descripcion: descripcion,
       categoria: categoria,
-      precio: precio
     })
     this.mensaje = "Actualización de producto realizada"
   }

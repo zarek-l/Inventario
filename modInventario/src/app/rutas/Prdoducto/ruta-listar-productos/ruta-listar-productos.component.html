@@ -12,14 +12,12 @@
         <tr>
           <th><strong>Categoría</strong> </th>
           <th><strong>Descripción</strong> </th>
-          <th><strong>Precio</strong></th>
           <th><strong>Acciones</strong></th>
         </tr>
 
         <tr *ngFor=" let i of productos; let in = index">
           <td>{{i['categoria']}}</td>
           <td>{{i['descripcion']}}</td>
-          <td>{{i['precio']}}</td>
           <td>
             <button class="btn" (click)="abrirDialogoEliminar(in)">
             <mat-icon>delete</mat-icon>

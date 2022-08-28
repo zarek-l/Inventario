@@ -23,11 +23,10 @@ export class RutaCrearProductoComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  async crearProducto(descripcion:string, categoria:string,precio:number) {
+  async crearProducto(descripcion:string, categoria:string) {
     let docRef = await addDoc(collection(this.db, "productos"), {
       descripcion: descripcion,
       categoria: categoria,
-      precio: precio,
     });
     this.mensaje = "Producto registrado"
 

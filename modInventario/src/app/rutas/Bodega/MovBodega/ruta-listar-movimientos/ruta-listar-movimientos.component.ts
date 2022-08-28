@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {initializeApp} from "firebase/app";
-import {environment} from "../../../../environments/environment";
+import {environment} from "../../../../../environments/environment";
 import { collection, deleteDoc, doc, getDocs, getFirestore, query} from "@angular/fire/firestore";
 import {DocumentData} from "firebase/firestore";
 import {Router} from "@angular/router";
-import {DeleteDialogComponent} from "../../../componentes/delete-dialog/delete-dialog/delete-dialog.component";
+import {DeleteDialogComponent} from "../../../../componentes/delete-dialog/delete-dialog/delete-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({

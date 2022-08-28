@@ -38,17 +38,16 @@ export class RutaCrearOrdenComponent implements OnInit {
     this.razon_social = proveedorSnapshot.docs.map(doc => doc.data());
   }
 
-  async crearOrden(proveedor:string, producto:string,fecha:string, cantidad:number, total:number) {
+  async crearOrden(proveedor:string, producto:string,fecha:string, cantidad:number, costoUnidad:number) {
     let docRef = await addDoc(collection(this.db, "orden_compra"), {
       proveedor: proveedor,
       producto: producto,
       fecha: fecha,
       cantidad: cantidad,
-      total: total,
-
+      costoUnidad: costoUnidad,
+      total:cantidad*costoUnidad
     });
     this.mensaje = "Orden de compra registrada"
   }
-
 
 }
