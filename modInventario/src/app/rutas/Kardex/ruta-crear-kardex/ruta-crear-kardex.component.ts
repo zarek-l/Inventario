@@ -97,7 +97,7 @@ export class RutaCrearKardexComponent implements OnInit {
       orden_producto: orden_producto,
       cantidad: cantidad,
       costoTotal: costoUnidad * cantidad,
-      costoUnitario: ((costoUnidad * cantidad + +this.costo_total)/+this.cantidad_total).toFixed(2)
+      unitarioInstantaneo: ((costoUnidad * cantidad + +this.costo_total)/+this.cantidad_total).toFixed(2)
     });
   }
 }
