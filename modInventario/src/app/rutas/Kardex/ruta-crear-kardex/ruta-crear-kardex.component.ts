@@ -15,6 +15,7 @@ export class RutaCrearKardexComponent implements OnInit {
   db = getFirestore();
   mensaje: string = "";
   producto: DocumentData[] = [];
+  costo_unitario: DocumentData[] = [];
   bodegas: DocumentData[] = [];
   producto_precio: DocumentData[] = [];
   precio: number = 0;
@@ -31,6 +32,7 @@ export class RutaCrearKardexComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerOrdenProducto()
     this.obtenerBodega()
+    this.obtenerCostosUnitariosPorProducto()
   }
 
   async obtenerBodega() {
@@ -39,19 +41,26 @@ export class RutaCrearKardexComponent implements OnInit {
     this.bodegas = productoSnapshot.docs.map(doc => doc.data());
   }
 
+  async obtenerCostosUnitariosPorProducto() {
+    let nombreCol = collection(this.db, 'orden_compra');
+    let productoSnapshot = await getDocs(nombreCol);
+    this.costo_unitario = productoSnapshot.docs.map(doc => doc.data());
+  }
+
   async obtenerOrdenProducto() {
     let productoCol = collection(this.db, 'orden_compra');
     let productoSnapshot = await getDocs(productoCol);
     this.producto = productoSnapshot.docs.map(doc => doc.data());
   }
 
-  async crearMovimiento(orden_producto: string, tipo: string, fecha: string, bodega: string, cantidad: number) {
+  async crearMovimiento(orden_producto: string, tipo: string, fecha: string, bodega: string, cantidad: number, costoUnitario:number) {
     let docRef = await addDoc(collection(this.db, "movimientos"), {
       orden_producto: orden_producto,
       tipo: tipo,
       fecha: fecha,
       bodega: bodega,
-      cantidad: cantidad
+      cantidad: cantidad,
+      costoUnitario: costoUnitario
     });
     await this.obtenerPrecioProducto(orden_producto)
     await this.crearMovimientoBodega(orden_producto, bodega, cantidad)

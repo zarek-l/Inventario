@@ -32,10 +32,17 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
+      <mat-card-subtitle >Bodega</mat-card-subtitle>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <select matNativeControl required #bodega>
+          <option *ngFor="let i of bodegas"  [value]="i['nombre_bodega']">{{i['nombre_bodega']}}</option>
+        </select>
+      </mat-form-field>
+
       <mat-grid-list cols="2" rowHeight="6:1" >
 
       <mat-grid-tile>
-        <mat-card-subtitle >Bodega</mat-card-subtitle>
+        <mat-card-subtitle class="unitario">Costo Unidad</mat-card-subtitle>
       </mat-grid-tile>
 
       <mat-grid-tile>
@@ -43,9 +50,9 @@
       </mat-grid-tile>
 
         <mat-grid-tile>
-          <mat-form-field class="example-mid-width" appearance="fill">
-            <select matNativeControl required #bodega>
-              <option *ngFor="let i of bodegas"  [value]="i['nombre_bodega']">{{i['nombre_bodega']}}</option>
+          <mat-form-field class="example-width" appearance="fill">
+            <select matNativeControl required #costoUnitario>
+              <option *ngFor="let i of costo_unitario"  [value]="i['costoUnidad']">{{i['costoUnidad']}}</option>
             </select>
           </mat-form-field>
         </mat-grid-tile>
@@ -58,9 +65,9 @@
     </mat-grid-list>
 
 
-      <br><br><mat-grid-list cols="2"  rowHeight="5:1">
+      <br><br><mat-grid-list cols="2"  rowHeight="6:1">
         <mat-grid-tile>
-          <button class="aceptarBtn" mat-raised-button (click)="crearMovimiento(orden_producto.value, tipo.value, fecha.value, bodega.value, +cantidad.value )" (click)="orden_producto.value=''"(click)="tipo.value=''"(click)="fecha.value=''"(click)="bodega.value=''"(click)="cantidad.value=''">Registrar</button>
+          <button class="aceptarBtn" mat-raised-button (click)="crearMovimiento(orden_producto.value, tipo.value, fecha.value, bodega.value, +cantidad.value, +costoUnitario )" (click)="orden_producto.value=''"(click)="tipo.value=''"(click)="fecha.value=''"(click)="bodega.value=''"(click)="cantidad.value=''"(click)="costoUnitario.value=''">Registrar</button>
         </mat-grid-tile>
 
         <mat-grid-tile>
