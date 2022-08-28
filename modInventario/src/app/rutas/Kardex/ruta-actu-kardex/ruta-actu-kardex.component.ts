@@ -17,6 +17,7 @@ export class RutaActuKardexComponent implements OnInit {
   idMovimiento = "";
   descripcion :DocumentData[]  =[];
   producto :DocumentData[]  =[];
+  bodegas :DocumentData[]  =[];
   movimiento:DocumentData  = []
 
   constructor(
@@ -28,6 +29,7 @@ export class RutaActuKardexComponent implements OnInit {
     this.idMovimiento = this.route.snapshot.paramMap.get('id')!!;
     this.obtenerMovimientos()
     this.obtenerOrden()
+    this.obtenerBodega()
   }
 
   async obtenerMovimientos() {
@@ -43,13 +45,20 @@ export class RutaActuKardexComponent implements OnInit {
     this.producto = productoSnapshot.docs.map(doc => doc.data());
   }
 
-  async actualizarMovimiento(orden_producto: string, tipo: string, fecha: string, costo_unitario: number, cantidad: number) {
+  async obtenerBodega(){
+    let nombreCol = collection(this.db, 'bodegas');
+    let productoSnapshot = await getDocs(nombreCol);
+    this.bodegas = productoSnapshot.docs.map(doc => doc.data());
+  }
+
+
+  async actualizarMovimiento(orden_producto: string, tipo: string, fecha: string, bodega: string, cantidad: number) {
     let refDoc = doc(this.db, "movimientos", this.idMovimiento);
     await updateDoc(refDoc, {
       orden_producto: orden_producto,
       tipo: tipo,
       fecha:fecha,
-      costo_unitario: costo_unitario,
+      bodega: bodega,
       cantidad: cantidad
     })
     this.mensaje = "Actualización de movimiento"

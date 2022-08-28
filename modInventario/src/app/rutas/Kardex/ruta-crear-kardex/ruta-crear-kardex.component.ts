@@ -15,12 +15,20 @@ export class RutaCrearKardexComponent implements OnInit {
   db = getFirestore();
   mensaje: string  ="";
   producto :DocumentData[]  =[];
+  bodegas :DocumentData[]  =[];
   constructor(
     public router: Router
   ) { }
 
   ngOnInit(): void {
     this.obtenerOrdenProducto()
+    this.obtenerBodega()
+  }
+
+  async obtenerBodega(){
+    let nombreCol = collection(this.db, 'bodegas');
+    let productoSnapshot = await getDocs(nombreCol);
+    this.bodegas = productoSnapshot.docs.map(doc => doc.data());
   }
 
   async obtenerOrdenProducto(){
@@ -29,12 +37,12 @@ export class RutaCrearKardexComponent implements OnInit {
     this.producto = productoSnapshot.docs.map(doc => doc.data());
   }
 
-  async crearMovimiento(orden_producto: string, tipo: string, fecha: string, costo_unitario: number, cantidad: number) {
+  async crearMovimiento(orden_producto: string, tipo: string, fecha: string, bodega: string, cantidad: number) {
     let docRef = await addDoc(collection(this.db, "movimientos"), {
       orden_producto: orden_producto,
       tipo: tipo,
       fecha:fecha,
-      costo_unitario: costo_unitario,
+      bodega: bodega,
       cantidad: cantidad
     });
     this.mensaje = "Movimiento registrado"

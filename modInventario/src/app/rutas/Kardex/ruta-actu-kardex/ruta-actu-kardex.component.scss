@@ -11,7 +11,7 @@ mat-drawer{
 .mat-card{
   text-align: center;
   width: 55%;
-  height: 80%;
+  height: 82%;
   display: inline-block;
   align-content: center;
   margin-left: 15%;
@@ -55,4 +55,9 @@ mat-grid-tile .mat-card-subtitle{
 
 .example-width{
   width: 20%;
+}
+
+.example-mid-width{
+  margin-left: 40% !important;
+  width: 60%;
 }

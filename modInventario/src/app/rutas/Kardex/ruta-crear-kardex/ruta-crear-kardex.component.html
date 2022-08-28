@@ -35,18 +35,20 @@
       <mat-grid-list cols="2" rowHeight="6:1" >
 
       <mat-grid-tile>
-        <mat-card-subtitle >Costo unidad(USD)</mat-card-subtitle>
+        <mat-card-subtitle >Bodega</mat-card-subtitle>
       </mat-grid-tile>
 
       <mat-grid-tile>
         <mat-card-subtitle >Cantidad</mat-card-subtitle>
       </mat-grid-tile>
 
-      <mat-grid-tile>
-        <mat-form-field class="example-width" appearance="fill">
-          <input matInput #costo_unitario>
-        </mat-form-field>
-      </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field class="example-mid-width" appearance="fill">
+            <select matNativeControl required #bodega>
+              <option *ngFor="let i of bodegas"  [value]="i['nombre_bodega']">{{i['nombre_bodega']}}</option>
+            </select>
+          </mat-form-field>
+        </mat-grid-tile>
 
       <mat-grid-tile>
         <mat-form-field class="example-width" appearance="fill">
@@ -58,7 +60,7 @@
 
       <br><br><mat-grid-list cols="2"  rowHeight="5:1">
         <mat-grid-tile>
-          <button class="aceptarBtn" mat-raised-button (click)="crearMovimiento(orden_producto.value, tipo.value, fecha.value, +costo_unitario.value, +cantidad.value )"(click)="orden_producto.value=''"(click)="tipo.value=''"(click)="fecha.value=''"(click)="costo_unitario.value=''"(click)="cantidad.value=''">Registrar</button>
+          <button class="aceptarBtn" mat-raised-button (click)="crearMovimiento(orden_producto.value, tipo.value, fecha.value, bodega.value, +cantidad.value )"(click)="orden_producto.value=''"(click)="tipo.value=''"(click)="fecha.value=''"(click)="bodega.value=''"(click)="cantidad.value=''">Registrar</button>
         </mat-grid-tile>
 
         <mat-grid-tile>
