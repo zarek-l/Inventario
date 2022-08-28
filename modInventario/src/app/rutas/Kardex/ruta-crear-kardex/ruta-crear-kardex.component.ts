@@ -62,26 +62,18 @@ export class RutaCrearKardexComponent implements OnInit {
       cantidad: cantidad,
       costoUnitario: costoUnitario
     });
-    await this.obtenerPrecioProducto(orden_producto)
-    await this.crearMovimientoBodega(orden_producto, bodega, cantidad)
+    await this.crearMovimientoBodega(orden_producto, bodega, cantidad, costoUnitario)
     this.mensaje = "Movimiento registrado"
   }
 
-  async obtenerPrecioProducto(nombre_producto: string) {
-    let nombreCol = collection(this.db, 'productos');
-    let nombreSnapshot = query(nombreCol, where('descripcion', '==', nombre_producto));
-    let productoQ = await getDocs(nombreSnapshot);
-    this.producto_precio = productoQ.docs.map(doc => doc.data()['precio']);
-    this.precio = +this.producto_precio;
-  }
-
   async obtenerCantidadTotal(nombre_producto: string){
-    var ref = query(collection(this.db, "movimiento_bodega"));
+    var ref = query(collection(this.db, "movimientos"));
     let nombreSnapshot = query(ref, where('orden_producto', '==', nombre_producto));
     const querySnapshot = await getDocs(nombreSnapshot);
     querySnapshot.forEach((doc) => {
         this.producto_cantidad = doc.data()['cantidad'];
         this.cantidad_total += +this.producto_cantidad;
+        console.log(this.cantidad_total)
     });
   }
 
@@ -92,18 +84,20 @@ export class RutaCrearKardexComponent implements OnInit {
     querySnapshot.forEach((doc) => {
       this.producto_costo = doc.data()['costoTotal'];
       this.costo_total += +this.producto_costo;
+      console.log(this.costo_total)
     });
   }
 
 
-  async crearMovimientoBodega(orden_producto: string, bodega: string, cantidad: number) {
-    await this.obtenerCantidadTotal(orden_producto)
+  async crearMovimientoBodega(orden_producto: string, bodega: string, cantidad: number, costoUnidad:number) {
     await this.obtenerPrecioTotal(orden_producto)
+    await this.obtenerCantidadTotal(orden_producto)
     let docRef = await addDoc(collection(this.db, "movimiento_bodega"), {
+      bodega:bodega,
       orden_producto: orden_producto,
       cantidad: cantidad,
-      costoTotal: this.precio*cantidad,
-      costoUnitario: this.costo_total/this.cantidad_total
+      costoTotal: costoUnidad * cantidad,
+      costoUnitario: ((costoUnidad * cantidad + +this.costo_total)/+this.cantidad_total).toFixed(2)
     });
   }
 }
