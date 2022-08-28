@@ -56,6 +56,7 @@ import { RutaActuProveedorComponent } from './rutas/Proveedor/ruta-actu-proveedo
 import { RutaListarCasilleroComponent } from './rutas/Bodega/Casillero/ruta-listar-casillero/ruta-listar-casillero.component';
 import { RutaCrearCasilleroComponent } from './rutas/Bodega/Casillero/ruta-crear-casillero/ruta-crear-casillero.component';
 import { RutaActuCasilleroComponent } from './rutas/Bodega/Casillero/ruta-actu-casillero/ruta-actu-casillero.component';
+import { RutaListarMovimientosComponent } from './rutas/Bodega/MovBodega/ruta-listar-movimientos/ruta-listar-movimientos.component';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { RutaActuCasilleroComponent } from './rutas/Bodega/Casillero/ruta-actu-c
     RutaListarCasilleroComponent,
     RutaCrearCasilleroComponent,
     RutaActuCasilleroComponent,
+    RutaListarMovimientosComponent,
 
   ],
     imports: [

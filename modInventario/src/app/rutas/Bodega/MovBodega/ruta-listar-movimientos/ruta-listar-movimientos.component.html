@@ -1,0 +1,37 @@
+<app-nav-bar></app-nav-bar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <app-side-bar></app-side-bar>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-card>
+      <mat-card-title>LISTADO DE MOVIMIENTOS EN BODEGA </mat-card-title><br>
+
+
+      <table class="default">
+        <tr>
+          <th><strong>Producto</strong> </th>
+          <th><strong>Cantidad items</strong></th>
+          <th><strong>Costo total</strong></th>
+          <th><strong>Costo unitario instantáneo</strong></th>
+        </tr>
+
+        <tr *ngFor=" let i of bodegas; let in = index">
+          <td>{{i['nombre_bodega']}}</td>
+          <td>{{i['direccion']}}</td>
+          <td>
+            <button class="btn" (click)="abrirDialogoEliminar(in)">
+              <mat-icon>delete</mat-icon>
+            </button>
+            <button class="btn" class="btn" (click)="listarCasillerosPorBodega(in)">
+              <mat-icon>move_to_inbox</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+      <tr>
+
+    </mat-card>
+  </mat-drawer-content>
+
+</mat-drawer-container>

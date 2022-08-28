@@ -28,6 +28,9 @@ import {
 } from "./rutas/Bodega/Casillero/ruta-listar-casillero/ruta-listar-casillero.component";
 import {RutaActuCasilleroComponent} from "./rutas/Bodega/Casillero/ruta-actu-casillero/ruta-actu-casillero.component";
 import {RutaActuKardexComponent} from "./rutas/Kardex/ruta-actu-kardex/ruta-actu-kardex.component";
+import {
+  RutaListarMovimientosComponent
+} from "./rutas/Bodega/MovBodega/ruta-listar-movimientos/ruta-listar-movimientos.component";
 
 const routes: Routes = [
   {
@@ -123,6 +126,11 @@ const routes: Routes = [
   },
   { path: 'actu-casillero',
     component: RutaActuCasilleroComponent,
+    canActivate: [AuthGuard]
+  },
+  //MOVIMIENTOS EN BODEGA
+  { path: 'listar-movimientos',
+    component: RutaListarMovimientosComponent,
     canActivate: [AuthGuard]
   },
 
