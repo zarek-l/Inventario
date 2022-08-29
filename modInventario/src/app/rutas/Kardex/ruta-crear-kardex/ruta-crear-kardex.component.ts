@@ -62,44 +62,60 @@ export class RutaCrearKardexComponent implements OnInit {
       cantidad: cantidad,
       costoUnitario: costoUnitario
     });
-    await this.crearMovimientoBodega(orden_producto, bodega, cantidad, costoUnitario)
+    await this.crearMovimientoBodega(orden_producto, bodega, cantidad, costoUnitario,tipo)
     this.mensaje = "Movimiento registrado"
   }
 
-  async obtenerCantidadTotal(nombre_producto: string, bodega: string){
+  async obtenerCantidadTotal(nombre_producto: string, bodega: string, tipo: string){
     var ref = query(collection(this.db, "movimientos"));
     let nombreSnapshot = query(ref, where('orden_producto', '==', nombre_producto));
     let nombrebodegaSnapshot = query(nombreSnapshot, where('bodega', '==', bodega));
-    const querySnapshot = await getDocs(nombrebodegaSnapshot);
-    querySnapshot.forEach((doc) => {
+    let tipoSnapshot = query(nombrebodegaSnapshot, where('tipo', '==', 'Ingreso'));
+    const querySnapshot = await getDocs(tipoSnapshot);
+      querySnapshot.forEach((doc) => {
         this.producto_cantidad = doc.data()['cantidad'];
         this.cantidad_total += +this.producto_cantidad;
         console.log(this.cantidad_total)
-    });
+      });
   }
 
-  async obtenerPrecioTotal(nombre_producto: string, bodega: string){
+  async obtenerPrecioTotal(nombre_producto: string, bodega: string, tipo: string){
     var ref = query(collection(this.db, "movimiento_bodega"));
     let nombreSnapshot = query(ref, where('orden_producto', '==', nombre_producto));
     let nombrebodegaSnapshot = query(nombreSnapshot, where('bodega', '==', bodega));
-    const querySnapshot = await getDocs(nombrebodegaSnapshot);
-    querySnapshot.forEach((doc) => {
-      this.producto_costo = doc.data()['costoTotal'];
-      this.costo_total += +this.producto_costo;
-      console.log(this.costo_total)
-    });
+    let tipoSnapshot = query(nombrebodegaSnapshot, where('tipo', '==', 'Ingreso'));
+    const querySnapshot = await getDocs(tipoSnapshot);
+      querySnapshot.forEach((doc) => {
+        this.producto_costo = doc.data()['costoTotal'];
+        this.costo_total += +this.producto_costo;
+        console.log(this.costo_total)
+      });
   }
 
 
-  async crearMovimientoBodega(orden_producto: string, bodega: string, cantidad: number, costoUnidad:number) {
-    await this.obtenerPrecioTotal(orden_producto, bodega)
-    await this.obtenerCantidadTotal(orden_producto,bodega)
-    let docRef = await addDoc(collection(this.db, "movimiento_bodega"), {
-      bodega:bodega,
-      orden_producto: orden_producto,
-      cantidad: cantidad,
-      costoTotal: costoUnidad * cantidad,
-      unitarioInstantaneo: ((costoUnidad * cantidad + +this.costo_total)/+this.cantidad_total).toFixed(2)
-    });
+  async crearMovimientoBodega(orden_producto: string, bodega: string, cantidad: number, costoUnidad:number, tipo: string) {
+    await this.obtenerPrecioTotal(orden_producto, bodega, tipo)
+    await this.obtenerCantidadTotal(orden_producto,bodega, tipo)
+    if(tipo == 'Ingreso'){
+      let docRef = await addDoc(collection(this.db, "movimiento_bodega"), {
+        bodega:bodega,
+        tipo: tipo,
+        orden_producto: orden_producto,
+        cantidad: cantidad,
+        costoTotal: costoUnidad * cantidad,
+        unitarioInstantaneo: ((costoUnidad * cantidad + +this.costo_total)/+this.cantidad_total).toFixed(2)
+      });
+    }
+
+    else if(tipo == 'Egreso'){
+      let docRef = await addDoc(collection(this.db, "movimiento_bodega"), {
+        bodega:bodega,
+        tipo: tipo,
+        orden_producto: orden_producto,
+        cantidad: cantidad,
+        costoTotal: costoUnidad * cantidad,
+        unitarioInstantaneo: 0
+      });
+    }
   }
 }
