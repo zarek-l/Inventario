@@ -37,6 +37,20 @@ export class RutaListarMovimientosComponent implements OnInit {
     this.movBodega = querySnapshot .docs.map(doc => doc.data())
   }
 
+  async eliminar(i : number) {
+    let movsCol = collection(this.db, 'movimiento_bodega');
+    let movsSnapshot =  query(movsCol);
+    let movsQ = await getDocs(movsSnapshot)
+    let ids = movsQ.docs.map(doc => doc.id)
+    let idEliminar = ids[i]
+    await this.eliminarDoc(idEliminar)
+  }
+
+  async eliminarDoc(id:string){
+    await deleteDoc(doc(this.db, "movimiento_bodega", id));
+    await this.obtenerMovimientosEnBodega(this.nombreBodega)
+  }
+
   abrirDialogoEliminar(posicion:number): void {
     const referenciaDialogo = this.dialog.open(
       DeleteDialogComponent,{
@@ -59,19 +73,4 @@ export class RutaListarMovimientosComponent implements OnInit {
         }
       )
   }
-
-  async eliminar(i : number) {
-    let CasCol = collection(this.db, 'movimiento_bodega');
-    let CasSnapshot =  query(CasCol);
-    let CasQ = await getDocs(CasSnapshot)
-    let ids = CasQ.docs.map(doc => doc.id)
-    let idEliminar = ids[i]
-    this.eliminarDoc(idEliminar)
-  }
-
-  async eliminarDoc(id:string){
-    await deleteDoc(doc(this.db, 'movimiento_bodega'));
-    this.obtenerMovimientosEnBodega(this.nombreBodega)
-  }
-
 }
