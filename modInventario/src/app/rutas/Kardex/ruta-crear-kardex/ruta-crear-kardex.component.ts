@@ -66,10 +66,11 @@ export class RutaCrearKardexComponent implements OnInit {
     this.mensaje = "Movimiento registrado"
   }
 
-  async obtenerCantidadTotal(nombre_producto: string){
+  async obtenerCantidadTotal(nombre_producto: string, bodega: string){
     var ref = query(collection(this.db, "movimientos"));
     let nombreSnapshot = query(ref, where('orden_producto', '==', nombre_producto));
-    const querySnapshot = await getDocs(nombreSnapshot);
+    let nombrebodegaSnapshot = query(nombreSnapshot, where('bodega', '==', bodega));
+    const querySnapshot = await getDocs(nombrebodegaSnapshot);
     querySnapshot.forEach((doc) => {
         this.producto_cantidad = doc.data()['cantidad'];
         this.cantidad_total += +this.producto_cantidad;
@@ -77,10 +78,11 @@ export class RutaCrearKardexComponent implements OnInit {
     });
   }
 
-  async obtenerPrecioTotal(nombre_producto: string){
+  async obtenerPrecioTotal(nombre_producto: string, bodega: string){
     var ref = query(collection(this.db, "movimiento_bodega"));
     let nombreSnapshot = query(ref, where('orden_producto', '==', nombre_producto));
-    const querySnapshot = await getDocs(nombreSnapshot);
+    let nombrebodegaSnapshot = query(nombreSnapshot, where('bodega', '==', bodega));
+    const querySnapshot = await getDocs(nombrebodegaSnapshot);
     querySnapshot.forEach((doc) => {
       this.producto_costo = doc.data()['costoTotal'];
       this.costo_total += +this.producto_costo;
@@ -90,8 +92,8 @@ export class RutaCrearKardexComponent implements OnInit {
 
 
   async crearMovimientoBodega(orden_producto: string, bodega: string, cantidad: number, costoUnidad:number) {
-    await this.obtenerPrecioTotal(orden_producto)
-    await this.obtenerCantidadTotal(orden_producto)
+    await this.obtenerPrecioTotal(orden_producto, bodega)
+    await this.obtenerCantidadTotal(orden_producto,bodega)
     let docRef = await addDoc(collection(this.db, "movimiento_bodega"), {
       bodega:bodega,
       orden_producto: orden_producto,
