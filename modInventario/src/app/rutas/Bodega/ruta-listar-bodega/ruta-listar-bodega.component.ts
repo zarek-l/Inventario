@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {environment} from "../../../../environments/environment";
-import {addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query} from "@angular/fire/firestore";
+import {addDoc, collection, deleteDoc, doc, getDocs, getFirestore, query, where} from "@angular/fire/firestore";
 import {DocumentData} from "firebase/firestore";
 import {Router} from "@angular/router";
 import {DeleteDialogComponent} from "../../../componentes/delete-dialog/delete-dialog/delete-dialog.component";
@@ -16,6 +16,8 @@ export class RutaListarBodegaComponent implements OnInit {
   app = initializeApp(environment.firebase);
   db = getFirestore();
   bodegas: DocumentData[] = [];
+  nombreBodega='';
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
@@ -85,13 +87,22 @@ export class RutaListarBodegaComponent implements OnInit {
     this.router.navigate(['/listar-casillero', { id: idBodega }]);
   }
 
+  async obtenerNombreBodegas(i:number){
+    this.bodegas = []
+    let BodCol = collection(this.db, 'bodegas');
+    let BodSnapshot =  query(BodCol);
+    let BodQuery = await getDocs(BodSnapshot)
+    let bodega = BodQuery.docs.map(doc => doc.data()['nombre_bodega'])
+    this.nombreBodega = bodega[i]
+  }
+
   async listarMovimientosPorBodega(i : number){
+    await this.obtenerNombreBodegas(i)
     let BodCol = collection(this.db, 'bodegas');
     let BodSnapshot =  query(BodCol);
     let BodQuery = await getDocs(BodSnapshot)
     let ids = BodQuery.docs.map(doc => doc.id)
     let idBodega = ids[i]
-    this.router.navigate(['/listar-movimientos', { id: idBodega }]);
+    this.router.navigate(['/listar-movimientos', { id: idBodega,nombreBodega: this.nombreBodega }]);
   }
-
 }
