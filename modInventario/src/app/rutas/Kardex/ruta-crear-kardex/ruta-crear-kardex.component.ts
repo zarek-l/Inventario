@@ -75,7 +75,6 @@ export class RutaCrearKardexComponent implements OnInit {
       querySnapshot.forEach((doc) => {
         this.producto_cantidad = doc.data()['cantidad'];
         this.cantidad_total += +this.producto_cantidad;
-        console.log(this.cantidad_total)
       });
   }
 
@@ -88,7 +87,6 @@ export class RutaCrearKardexComponent implements OnInit {
       querySnapshot.forEach((doc) => {
         this.producto_costo = doc.data()['costoTotal'];
         this.costo_total += +this.producto_costo;
-        console.log(this.costo_total)
       });
   }
 
