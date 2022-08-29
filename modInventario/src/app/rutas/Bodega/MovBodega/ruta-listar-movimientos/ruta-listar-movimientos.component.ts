@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {environment} from "../../../../../environments/environment";
-import {collection, getDocs, getFirestore, query, where} from "@angular/fire/firestore";
+import {collection, deleteDoc, doc, getDocs, getFirestore, query, where} from "@angular/fire/firestore";
 import {DocumentData} from "firebase/firestore";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
+import {DeleteDialogComponent} from "../../../../componentes/delete-dialog/delete-dialog/delete-dialog.component";
 
 @Component({
   selector: 'app-ruta-listar-movimientos',
@@ -35,4 +36,42 @@ export class RutaListarMovimientosComponent implements OnInit {
     const querySnapshot = await getDocs(nombreSnapshot);
     this.movBodega = querySnapshot .docs.map(doc => doc.data())
   }
+
+  abrirDialogoEliminar(posicion:number): void {
+    const referenciaDialogo = this.dialog.open(
+      DeleteDialogComponent,{
+        disableClose : true,
+        data:{
+          posicion
+        }
+      }
+    );
+    const despuesCerrado$ = referenciaDialogo.afterClosed();
+    despuesCerrado$
+      .subscribe(
+        (datos) => {
+          if(datos.estado == 'true'){
+            this.eliminar(posicion)
+          }
+          else{
+            console.log('accion cancelada')
+          }
+        }
+      )
+  }
+
+  async eliminar(i : number) {
+    let CasCol = collection(this.db, 'movimiento_bodega');
+    let CasSnapshot =  query(CasCol);
+    let CasQ = await getDocs(CasSnapshot)
+    let ids = CasQ.docs.map(doc => doc.id)
+    let idEliminar = ids[i]
+    this.eliminarDoc(idEliminar)
+  }
+
+  async eliminarDoc(id:string){
+    await deleteDoc(doc(this.db, 'movimiento_bodega'));
+    this.obtenerMovimientosEnBodega(this.nombreBodega)
+  }
+
 }
