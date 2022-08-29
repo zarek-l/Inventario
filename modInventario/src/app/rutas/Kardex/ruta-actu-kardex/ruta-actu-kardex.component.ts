@@ -50,13 +50,21 @@ export class RutaActuKardexComponent implements OnInit {
   async obtenerCostosUnitariosPorProducto() {
     let nombreCol = collection(this.db, 'orden_compra');
     let productoSnapshot = await getDocs(nombreCol);
-    this.costo_unitario = productoSnapshot.docs.map(doc => doc.data());
+    this.costo_unitario = productoSnapshot.docs.map(doc => doc.data()['costoUnidad']);
+    let result = this.costo_unitario.filter((item,index)=>{
+      return this.costo_unitario.indexOf(item) === index;
+    })
+    this.costo_unitario=result
   }
 
-  async obtenerOrden(){
-    let productoCol = collection(this.db, 'orden_compra');
-    let productoSnapshot = await getDocs(productoCol);
-    this.producto = productoSnapshot.docs.map(doc => doc.data());
+  async obtenerOrden() {
+    let productoNCol = collection(this.db, 'orden_compra');
+    let productoNSnapshot = await getDocs(productoNCol);
+    this.producto = productoNSnapshot.docs.map(doc => doc.data()['producto']);
+    let result = this.producto.filter((item,index)=>{
+      return this.producto.indexOf(item) === index;
+    })
+    this.producto=result
   }
 
   async obtenerBodega(){
@@ -81,8 +89,8 @@ export class RutaActuKardexComponent implements OnInit {
   }
 
   async obtenerCantidadTotal(nombre_producto: string, bodega: string, tipo: string){
-    var ref = query(collection(this.db, "movimientos"));
-    let nombreSnapshot = query(ref, where('orden_producto', '==', nombre_producto));
+    var refE = query(collection(this.db, "movimientos"));
+    let nombreSnapshot = query(refE, where('orden_producto', '==', nombre_producto));
     let nombrebodegaSnapshot = query(nombreSnapshot, where('bodega', '==', bodega));
     let tipoSnapshot = query(nombrebodegaSnapshot, where('tipo', '==', 'Ingreso'));
     const querySnapshot = await getDocs(tipoSnapshot);
@@ -94,8 +102,8 @@ export class RutaActuKardexComponent implements OnInit {
   }
 
   async obtenerPrecioTotal(nombre_producto: string, bodega: string, tipo: string){
-    var ref = query(collection(this.db, "movimiento_bodega"));
-    let nombreSnapshot = query(ref, where('orden_producto', '==', nombre_producto));
+    var refE = query(collection(this.db, "movimiento_bodega"));
+    let nombreSnapshot = query(refE, where('orden_producto', '==', nombre_producto));
     let nombrebodegaSnapshot = query(nombreSnapshot, where('bodega', '==', bodega));
     let tipoSnapshot = query(nombrebodegaSnapshot, where('tipo', '==', 'Ingreso'));
     const querySnapshot = await getDocs(tipoSnapshot);

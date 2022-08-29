@@ -12,7 +12,7 @@
       <mat-card-subtitle>Producto disponible</mat-card-subtitle>
       <mat-form-field class="example-full-width" appearance="fill">
         <select matNativeControl required #orden_producto>
-          <option *ngFor="let i of producto"  [value]="i['producto']">{{i['producto']}}</option>
+          <option [value]="item" *ngFor="let item of producto">{{item}}</option>
         </select>
       </mat-form-field>
 
@@ -52,7 +52,7 @@
         <mat-grid-tile>
           <mat-form-field class="example-width" appearance="fill">
             <select matNativeControl required #costoUnitario>
-              <option *ngFor="let i of costo_unitario"  [value]="i['costoUnidad']">{{i['costoUnidad']}}</option>
+              <option [value]="item" *ngFor="let item of costo_unitario">{{item}}</option>
             </select>
           </mat-form-field>
         </mat-grid-tile>

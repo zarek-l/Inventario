@@ -44,13 +44,21 @@ export class RutaCrearKardexComponent implements OnInit {
   async obtenerCostosUnitariosPorProducto() {
     let nombreCol = collection(this.db, 'orden_compra');
     let productoSnapshot = await getDocs(nombreCol);
-    this.costo_unitario = productoSnapshot.docs.map(doc => doc.data());
+    this.costo_unitario = productoSnapshot.docs.map(doc => doc.data()['costoUnidad']);
+    let result = this.costo_unitario.filter((item,index)=>{
+      return this.costo_unitario.indexOf(item) === index;
+    })
+    this.costo_unitario=result
   }
 
   async obtenerOrdenProducto() {
     let productoCol = collection(this.db, 'orden_compra');
     let productoSnapshot = await getDocs(productoCol);
-    this.producto = productoSnapshot.docs.map(doc => doc.data());
+    this.producto = productoSnapshot.docs.map(doc => doc.data()['producto']);
+    let result = this.producto.filter((item,index)=>{
+      return this.producto.indexOf(item) === index;
+    })
+    this.producto=result
   }
 
   async crearMovimiento(orden_producto: string, tipo: string, fecha: string, bodega: string, cantidad: number, costoUnitario:number) {
