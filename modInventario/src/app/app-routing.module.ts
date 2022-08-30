@@ -5,7 +5,6 @@ import {RutaInicioComponent} from "./rutas/ruta-inicio/ruta-inicio.component";
 import {RutaOlvidarClaveComponent} from "./rutas/ruta-olvidar-clave/ruta-olvidar-clave.component";
 import {RutaVerificarEmailComponent} from "./rutas/ruta-verificar-email/ruta-verificar-email.component";
 import {AuthGuard} from "./servicios/guard/auth.guard";
-import {RutaDashboardComponent} from "./rutas/ruta-dashboard/ruta-dashboard.component";
 import {RutaCrearProductoComponent} from "./rutas/Prdoducto/ruta-crear-producto/ruta-crear-producto.component";
 import {RutaListarProveedorComponent} from "./rutas/Proveedor/ruta-listar-proveedor/ruta-listar-proveedor.component";
 import {RutaCrearProveedorComponent} from "./rutas/Proveedor/ruta-crear-proveedor/ruta-crear-proveedor.component";
@@ -20,17 +19,11 @@ import {RutaActuBodegaComponent} from "./rutas/Bodega/ruta-actu-bodega/ruta-actu
 import {RutaActuProductoComponent} from "./rutas/Prdoducto/ruta-actu-producto/ruta-actu-producto.component";
 import {RutaActuProveedorComponent} from "./rutas/Proveedor/ruta-actu-proveedor/ruta-actu-proveedor.component";
 import {RutaActuOrdenComponent} from "./rutas/Orden_compra/ruta-actu-orden/ruta-actu-orden.component";
-import {
-  RutaCrearCasilleroComponent
-} from "./rutas/Bodega/Casillero/ruta-crear-casillero/ruta-crear-casillero.component";
-import {
-  RutaListarCasilleroComponent
-} from "./rutas/Bodega/Casillero/ruta-listar-casillero/ruta-listar-casillero.component";
+import {RutaCrearCasilleroComponent} from "./rutas/Bodega/Casillero/ruta-crear-casillero/ruta-crear-casillero.component";
+import {RutaListarCasilleroComponent} from "./rutas/Bodega/Casillero/ruta-listar-casillero/ruta-listar-casillero.component";
 import {RutaActuCasilleroComponent} from "./rutas/Bodega/Casillero/ruta-actu-casillero/ruta-actu-casillero.component";
 import {RutaActuKardexComponent} from "./rutas/Kardex/ruta-actu-kardex/ruta-actu-kardex.component";
-import {
-  RutaListarMovimientosComponent
-} from "./rutas/Bodega/MovBodega/ruta-listar-movimientos/ruta-listar-movimientos.component";
+import {RutaListarMovimientosComponent} from "./rutas/Bodega/MovBodega/ruta-listar-movimientos/ruta-listar-movimientos.component";
 
 const routes: Routes = [
   {
@@ -53,10 +46,6 @@ const routes: Routes = [
   {
     path: 'verificar-email',
     component: RutaVerificarEmailComponent
-  },
-  { path: 'dashboard',
-    component: RutaDashboardComponent,
-    canActivate: [AuthGuard]
   },
 
   //CRUD PRODUCTO

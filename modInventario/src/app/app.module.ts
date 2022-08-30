@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RutaLoginComponent} from './rutas/ruta-login/ruta-login.component';
@@ -37,7 +36,6 @@ import { environment } from '../environments/environment';
 import { AuthService } from "./servicios/auth.service";
 import { RutaOlvidarClaveComponent } from './rutas/ruta-olvidar-clave/ruta-olvidar-clave.component';
 import { RutaVerificarEmailComponent } from './rutas/ruta-verificar-email/ruta-verificar-email.component';
-import { RutaDashboardComponent } from './rutas/ruta-dashboard/ruta-dashboard.component';
 import { RutaCrearProductoComponent } from './rutas/Prdoducto/ruta-crear-producto/ruta-crear-producto.component';
 import { RutaListarProductosComponent } from './rutas/Prdoducto/ruta-listar-productos/ruta-listar-productos.component';
 import { RutaCrearProveedorComponent } from './rutas/Proveedor/ruta-crear-proveedor/ruta-crear-proveedor.component';
@@ -66,7 +64,6 @@ import { RutaListarMovimientosComponent } from './rutas/Bodega/MovBodega/ruta-li
     RutaInicioComponent,
     RutaOlvidarClaveComponent,
     RutaVerificarEmailComponent,
-    RutaDashboardComponent,
     RutaCrearProductoComponent,
     RutaListarProductosComponent,
     RutaCrearProveedorComponent,
