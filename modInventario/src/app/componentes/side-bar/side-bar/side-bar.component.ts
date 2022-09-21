@@ -20,8 +20,8 @@ const TREE_DATA: FoodNode[] = [
     url:''
   },
   {
-    name: 'Gestor de ordenes de compra',
-    children: [{name: 'Creación de orden', url:'/crear-orden'}, {name: 'Listado de ordenes', url:'/listar-orden'}],
+    name: 'Gestor de órdenes de compra',
+    children: [{name: 'Creación de orden', url:'/crear-orden'}, {name: 'Listado de órdenes', url:'/listar-orden'}],
     url:''
   },
   {
